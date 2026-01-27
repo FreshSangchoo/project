@@ -65,7 +65,6 @@ React Native 기반 iOS / Android 크로스 플랫폼 앱
 - TalkPlus 1:1 채팅 기능 구현
 - 홈 화면 및 마이페이지 UI 개발
 - 채널톡 고객 지원 시스템 통합
-- 전반적인 UI/UX 설계 및 화면 구현
 
 ---
 
