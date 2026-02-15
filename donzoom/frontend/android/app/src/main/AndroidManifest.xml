@@ -1,0 +1,45 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ssafy.donzoom">
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<!-- Android 13(API 33) 이상에서 알림을 보내기 위해 권한 필요 -->
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<!-- 인터넷 권한 추가 -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="false" android:theme="@style/AppTheme" android:supportsRtl="true">
+		<!-- android:networkSecurityConfig="@xml/network_security_config"> -->
+		<!-- MainActivity for app launch -->
+		<activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:exported="true">
+			<intent-filter>
+				<!-- 기본적으로 앱을 실행하는 intent-filter -->
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<!-- 카카오 로그인에서 리디렉션을 처리하기 위한 intent-filter -->
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:host="oauth" android:scheme="kakao{카카오 네이티브 앱 key를 입력해주세요}" />
+			</intent-filter>
+		</activity>
+		<!-- 카카오 로그인 AuthCodeHandlerActivity -->
+		<activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<!-- 리디렉션 URI -->
+				<data android:host="oauth" android:scheme="kakaoca5e859e830d309bb50739b199f13cb6" />
+			</intent-filter>
+		</activity>
+		<!-- 구글 Oauth 로그인 -->
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<meta-data android:name="DEBUG_SERVER_HOST_NAME" android:value="localhost" />
+		<meta-data android:name="DEBUG_SERVER_PORT" android:value="3000" />
+	</application>
+</manifest>

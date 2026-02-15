@@ -1,0 +1,28 @@
+{
+  "header": {
+    "apiName": "inquireDemandDepositAccountList",
+    "institutionCode": "00100",
+    "responseCode": "H0000",
+    "responseMessage": "정상처리 되었습니다.",
+    "transmissionDate": "20240927",
+    "transmissionTime": "090827"
+  },
+  "rec": [
+    {
+      "accountBalance": "100000000",
+      "accountCreatedDate": "20240926",
+      "accountExpiryDate": "20290926",
+      "accountName": "한국은행행 테스트상품",
+      "accountNo": "0013352627401426",
+      "accountTypeCode": "1",
+      "accountTypeName": "수시입출금",
+      "bankCode": "001",
+      "bankName": "한국은행",
+      "currency": "KRW",
+      "dailyTransferLimit": "500000000",
+      "lastTransactionDate": "20240926",
+      "oneTimeTransferLimit": "100000000",
+      "userName": "zzirco"
+    }
+  ]
+}

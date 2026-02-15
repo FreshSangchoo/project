@@ -1,0 +1,84 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id "org.sonarqube" version "4.0.0.2929"
+}
+
+
+group = 'com.example.donzoom'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "S11P21A108"
+        property "sonar.host.url", "https://sonarqube.ssafy.com"
+        property "sonar.login", "sqp_c7903b79ebe7f992c17c7fb597e328c1823aef0a"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Security OAuth2 클라이언트
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // JWT 관련 의존성 추가
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'
+
+    // MySQL JDBC 드라이버 추가
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // WebSocket 관련 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // WebClient 관련 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // Redis 관련 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // Firebase 관련 의존성 추가
+    implementation 'com.google.firebase:firebase-admin:9.1.1'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.2.2'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+bootJar {
+    archiveBaseName.set('donzoom')    // JAR 파일의 기본 이름 설정
+    archiveVersion.set('1.0')         // 버전 설정
+    archiveClassifier.set('release')  // 선택적: 분류자 설정 (필요 없으면 생략 가능)
+    archiveFileName.set('donzoom.jar') // 전체 파일 이름 지정 (선택 사항)
+}

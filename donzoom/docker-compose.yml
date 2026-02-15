@@ -1,0 +1,57 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      TZ: Asia/Seoul
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  springboot:
+    image: backend
+    build: ./backend  # backend 디렉토리에서 Dockerfile을 사용해 이미지 빌드
+    container_name: donzoom
+    environment:
+      TZ: Asia/Seoul
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    ports:
+      - "8081:8081"
+    volumes:
+      - /home/ubuntu/jenkins-data/workspace/pipeline/backend/src/main/resources/application.properties:/config/application.properties
+      - /home/ubuntu/uploads:/uploads  # EC2의 /home/ubuntu/uploads 디렉토리를 컨테이너의 /uploads로 마운트
+
+    depends_on:
+      - mysql
+      - redis
+
+  redis:
+    image: redis:6.2
+    container_name: redis
+    environment:
+      TZ: Asia/Seoul
+    ports:
+      - "6379:6379"  # 호스트와 컨테이너 간의 포트 매핑
+    command: ["redis-server", "--bind", "0.0.0.0", "--protected-mode", "no"]  # 모든 IP에서 접근 허용 및 보호 모드 비활성화
+    restart: always  # 컨테이너가 종료되면 자동 재시작
+
+  fastapi:
+    build: ./python  # fastapi 디렉토리에서 Dockerfile을 사용해 이미지 빌드
+    container_name: fastapi
+    environment:
+      TZ: Asia/Seoul
+    ports:
+      - "8082:8082"  # FastAPI 앱의 포트
+    depends_on:
+      - mysql
+      - redis

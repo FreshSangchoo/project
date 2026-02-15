@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- 배경색 설정 -->
+        <color android:color="#FEE27F" />
+    </item>
+    <item>
+        <!-- 스플래시 이미지 설정 -->
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/splash_image"
+            android:scaleType="centerCrop" />
+    </item>
+</layer-list>

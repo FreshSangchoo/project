@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+apscheduler
+yfinance
+pytz
+requests
+python-dotenv
+selenium
+webdriver-manager

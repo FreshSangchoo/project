@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1005190129327",
+    "project_id": "donzoom",
+    "storage_bucket": "donzoom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005190129327:android:5f3155457bc18b39c7965a",
+        "android_client_info": {
+          "package_name": "com.ssafy.donzoom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005190129327-eh3agbl7jh2rcti5fqo5lfid9hvquar6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.donzoom",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1005190129327-sc86198iu6dbhtdrpcg4l01c2kji09kl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSUTJysXrGAo2kxrgyEAVNiiVcr4Xfj40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005190129327-sc86198iu6dbhtdrpcg4l01c2kji09kl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

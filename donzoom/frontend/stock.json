@@ -1,0 +1,1702 @@
+{
+  "stockHistories": [
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T09:20:17",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18129
+    },
+    {
+      "close": 36550,
+      "createdAt": "2024-10-07T09:21:00",
+      "high": 36550,
+      "low": 36550,
+      "open": 36550,
+      "stockHistoryId": 18134
+    },
+    {
+      "close": 36600,
+      "createdAt": "2024-10-07T09:22:00",
+      "high": 36600,
+      "low": 36600,
+      "open": 36600,
+      "stockHistoryId": 18139
+    },
+    {
+      "close": 36350,
+      "createdAt": "2024-10-07T09:23:00",
+      "high": 36350,
+      "low": 36350,
+      "open": 36350,
+      "stockHistoryId": 18144
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:24:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18149
+    },
+    {
+      "close": 36350,
+      "createdAt": "2024-10-07T09:25:00",
+      "high": 36350,
+      "low": 36350,
+      "open": 36350,
+      "stockHistoryId": 18154
+    },
+    {
+      "close": 36250,
+      "createdAt": "2024-10-07T09:26:00",
+      "high": 36250,
+      "low": 36250,
+      "open": 36250,
+      "stockHistoryId": 18159
+    },
+    {
+      "close": 36250,
+      "createdAt": "2024-10-07T09:27:00",
+      "high": 36250,
+      "low": 36250,
+      "open": 36250,
+      "stockHistoryId": 18164
+    },
+    {
+      "close": 36300,
+      "createdAt": "2024-10-07T09:28:00",
+      "high": 36300,
+      "low": 36300,
+      "open": 36300,
+      "stockHistoryId": 18169
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:29:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18174
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:30:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18179
+    },
+    {
+      "close": 36300,
+      "createdAt": "2024-10-07T09:31:00",
+      "high": 36300,
+      "low": 36300,
+      "open": 36300,
+      "stockHistoryId": 18184
+    },
+    {
+      "close": 36300,
+      "createdAt": "2024-10-07T09:32:00",
+      "high": 36300,
+      "low": 36300,
+      "open": 36300,
+      "stockHistoryId": 18189
+    },
+    {
+      "close": 36350,
+      "createdAt": "2024-10-07T09:33:00",
+      "high": 36350,
+      "low": 36350,
+      "open": 36350,
+      "stockHistoryId": 18194
+    },
+    {
+      "close": 36350,
+      "createdAt": "2024-10-07T09:34:00",
+      "high": 36350,
+      "low": 36350,
+      "open": 36350,
+      "stockHistoryId": 18199
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:35:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18204
+    },
+    {
+      "close": 36350,
+      "createdAt": "2024-10-07T09:36:00",
+      "high": 36350,
+      "low": 36350,
+      "open": 36350,
+      "stockHistoryId": 18209
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:37:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18214
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:38:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18219
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:39:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18224
+    },
+    {
+      "close": 36600,
+      "createdAt": "2024-10-07T09:40:00",
+      "high": 36600,
+      "low": 36600,
+      "open": 36600,
+      "stockHistoryId": 18229
+    },
+    {
+      "close": 36550,
+      "createdAt": "2024-10-07T09:41:00",
+      "high": 36550,
+      "low": 36550,
+      "open": 36550,
+      "stockHistoryId": 18234
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:42:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18239
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:43:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18244
+    },
+    {
+      "close": 36450,
+      "createdAt": "2024-10-07T09:44:00",
+      "high": 36450,
+      "low": 36450,
+      "open": 36450,
+      "stockHistoryId": 18249
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:45:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18254
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:46:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18259
+    },
+    {
+      "close": 36450,
+      "createdAt": "2024-10-07T09:47:00",
+      "high": 36450,
+      "low": 36450,
+      "open": 36450,
+      "stockHistoryId": 18264
+    },
+    {
+      "close": 36450,
+      "createdAt": "2024-10-07T09:48:00",
+      "high": 36450,
+      "low": 36450,
+      "open": 36450,
+      "stockHistoryId": 18269
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:49:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18274
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:50:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18279
+    },
+    {
+      "close": 36400,
+      "createdAt": "2024-10-07T09:51:00",
+      "high": 36400,
+      "low": 36400,
+      "open": 36400,
+      "stockHistoryId": 18284
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:52:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18289
+    },
+    {
+      "close": 36600,
+      "createdAt": "2024-10-07T09:53:00",
+      "high": 36600,
+      "low": 36600,
+      "open": 36600,
+      "stockHistoryId": 18294
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:54:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18299
+    },
+    {
+      "close": 36450,
+      "createdAt": "2024-10-07T09:55:00",
+      "high": 36450,
+      "low": 36450,
+      "open": 36450,
+      "stockHistoryId": 18304
+    },
+    {
+      "close": 36450,
+      "createdAt": "2024-10-07T09:56:00",
+      "high": 36450,
+      "low": 36450,
+      "open": 36450,
+      "stockHistoryId": 18309
+    },
+    {
+      "close": 36500,
+      "createdAt": "2024-10-07T09:58:00",
+      "high": 36500,
+      "low": 36500,
+      "open": 36500,
+      "stockHistoryId": 18314
+    },
+    {
+      "close": 36600,
+      "createdAt": "2024-10-07T09:59:00",
+      "high": 36600,
+      "low": 36600,
+      "open": 36600,
+      "stockHistoryId": 18319
+    },
+    {
+      "close": 36600,
+      "createdAt": "2024-10-07T10:00:00",
+      "high": 36600,
+      "low": 36600,
+      "open": 36600,
+      "stockHistoryId": 18324
+    },
+    {
+      "close": 36650,
+      "createdAt": "2024-10-07T10:01:00",
+      "high": 36650,
+      "low": 36650,
+      "open": 36650,
+      "stockHistoryId": 18329
+    },
+    {
+      "close": 36650,
+      "createdAt": "2024-10-07T10:02:00",
+      "high": 36650,
+      "low": 36650,
+      "open": 36650,
+      "stockHistoryId": 18334
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:03:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18339
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:04:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18344
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T10:05:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18349
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T10:06:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18354
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:07:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18359
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:08:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18364
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:09:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18369
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:10:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18374
+    },
+    {
+      "close": 36650,
+      "createdAt": "2024-10-07T10:11:00",
+      "high": 36650,
+      "low": 36650,
+      "open": 36650,
+      "stockHistoryId": 18379
+    },
+    {
+      "close": 36650,
+      "createdAt": "2024-10-07T10:12:00",
+      "high": 36650,
+      "low": 36650,
+      "open": 36650,
+      "stockHistoryId": 18384
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:13:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18389
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T10:14:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18394
+    },
+    {
+      "close": 36700,
+      "createdAt": "2024-10-07T10:15:00",
+      "high": 36700,
+      "low": 36700,
+      "open": 36700,
+      "stockHistoryId": 18399
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T10:16:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18404
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T10:17:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18409
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:18:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18414
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:19:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18419
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:20:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18424
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:21:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18429
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:22:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18434
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:23:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18439
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:24:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18444
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:25:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18449
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:26:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18454
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:27:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18459
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:28:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18464
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:29:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18469
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:30:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18474
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:31:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18479
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:32:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18484
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:33:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18489
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T10:34:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18494
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:35:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18499
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:36:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18504
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:37:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18509
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:38:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18514
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:39:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18519
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:40:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18524
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:41:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18529
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:42:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18534
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:43:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18539
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:44:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18544
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:45:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18549
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T10:46:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18554
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:47:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18559
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:48:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18564
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:49:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18569
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T10:50:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18574
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:51:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18579
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T10:52:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18584
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T10:53:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18589
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:54:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18594
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T10:55:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18599
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T10:56:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18604
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:57:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18609
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:58:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18614
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T10:59:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18619
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:00:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18624
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:01:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18629
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:02:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18634
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:03:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18639
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:04:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18644
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:05:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18649
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:06:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18654
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:07:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18659
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T11:08:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18664
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T11:09:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18669
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T11:10:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18674
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T11:11:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18679
+    },
+    {
+      "close": 36750,
+      "createdAt": "2024-10-07T11:12:00",
+      "high": 36750,
+      "low": 36750,
+      "open": 36750,
+      "stockHistoryId": 18684
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:13:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18689
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:14:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18694
+    },
+    {
+      "close": 36800,
+      "createdAt": "2024-10-07T11:15:00",
+      "high": 36800,
+      "low": 36800,
+      "open": 36800,
+      "stockHistoryId": 18699
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:16:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18704
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:17:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18709
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:18:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18714
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:19:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18719
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:20:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18724
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:21:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18729
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:22:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18734
+    },
+    {
+      "close": 36850,
+      "createdAt": "2024-10-07T11:23:00",
+      "high": 36850,
+      "low": 36850,
+      "open": 36850,
+      "stockHistoryId": 18739
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:24:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18744
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:25:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18749
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:26:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18754
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:27:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18759
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:28:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18764
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:29:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18769
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:30:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18774
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:31:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18779
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:32:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18784
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:33:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18789
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:34:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18794
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:35:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18799
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:36:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18804
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:37:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18809
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:38:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18814
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:39:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18819
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:40:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18824
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:41:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18829
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:42:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18834
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T11:43:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18839
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:44:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18844
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:45:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18849
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:46:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18854
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:47:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18859
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:48:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18864
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:49:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18869
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:50:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18874
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:51:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18879
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:52:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18884
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T11:53:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18889
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:54:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18894
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T11:55:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 18899
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:56:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18904
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:57:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18909
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:58:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18914
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T11:59:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18919
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:00:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18924
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:01:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18929
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:02:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18934
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:03:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18939
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:04:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18944
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:05:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18949
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:06:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18954
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:07:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18959
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:08:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18964
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:09:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18969
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T12:10:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18974
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:11:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18979
+    },
+    {
+      "close": 36900,
+      "createdAt": "2024-10-07T12:12:00",
+      "high": 36900,
+      "low": 36900,
+      "open": 36900,
+      "stockHistoryId": 18984
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:13:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 18989
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:14:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18994
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:15:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 18999
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:16:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19004
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:17:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19009
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:18:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19014
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:19:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19019
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:20:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19024
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:21:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19029
+    },
+    {
+      "close": 37100,
+      "createdAt": "2024-10-07T12:22:00",
+      "high": 37100,
+      "low": 37100,
+      "open": 37100,
+      "stockHistoryId": 19034
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:23:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19039
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:24:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19044
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:25:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19049
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:26:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19054
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:27:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19059
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:28:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19064
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:29:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19069
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:30:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19074
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:31:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19079
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:32:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19084
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:33:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19089
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:34:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19094
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:35:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19099
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:36:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19104
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:37:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19109
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:38:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19114
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:39:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19119
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:40:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19124
+    },
+    {
+      "close": 37050,
+      "createdAt": "2024-10-07T12:41:00",
+      "high": 37050,
+      "low": 37050,
+      "open": 37050,
+      "stockHistoryId": 19129
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:42:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19134
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:43:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19139
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:44:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19144
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:45:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19149
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:46:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19154
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:47:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19159
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:48:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19164
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:49:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19169
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:50:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19174
+    },
+    {
+      "close": 36950,
+      "createdAt": "2024-10-07T12:51:00",
+      "high": 36950,
+      "low": 36950,
+      "open": 36950,
+      "stockHistoryId": 19179
+    },
+    {
+      "close": 37000,
+      "createdAt": "2024-10-07T12:52:00",
+      "high": 37000,
+      "low": 37000,
+      "open": 37000,
+      "stockHistoryId": 19184
+    }
+  ],
+  "stockId": 4,
+  "stockName": "카카오"
+}
