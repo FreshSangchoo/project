@@ -29,46 +29,13 @@ Android / Wear OS 연동 기반 음성 인식 애플리케이션
 
 ## 🖼️ 서비스 화면
 
-### 🎙️ 음성 인식 (STT)
-
-| Watch | Mobile |
-| ----- | ----- |
-| <video src="images/connectWatchSTT.mp4" controls width="240"></video> | <video src="images/connectPhoneSTT.mp4" controls width="240"></video> |
-
-상대방 음성을 실시간으로 텍스트로 변환하여 화면에 출력합니다.
-
-### 💬 답변 추천
-
-| Watch | Mobile |
-| ----- | ----- |
-| <video src="images/connectWatchRecommend.mp4" controls width="240"></video> | <video src="images/connectPhoneRecommend.mp4" controls width="240"></video> |
-
-인식된 음성을 기반으로 대화 흐름에 맞는 예상 답변을 추천합니다.
-
-### 🔄 단어 교체
-
-| Watch | Mobile |
-| ----- | ----- |
-| <video src="images/connectWatchChange.mp4" controls width="240"></video> | <video src="images/connectPhoneChange.mp4" controls width="240"></video> |
-
-생성된 답변의 단어를 빠르게 교체할 수 있으며  
-과거 대화 데이터를 기반으로 추천됩니다.
-
-### 📜 대화 목록
-
-| Watch | Mobile |
-| ----- | ----- |
-| <video src="images/connectWatchList.mp4" controls width="240"></video> | <video src="images/connectPhoneList.mp4" controls width="240"></video> |
-
-이전 대화 기록을 확인할 수 있습니다.
-
-### 🔔 이름 알림
-
-| Watch | Mobile |
-| ----- | ----- |
-| <video src="images/connectWatchAlarmName.mp4" controls width="240"></video> | <video src="images/connectPhoneAlarmName.mp4" controls width="240"></video> |
-
-사용자의 이름이나 별명을 부르면 진동과 함께 알림을 제공합니다.
+| 기능           | Watch                                              | Mobile                                             |
+| -------------- | -------------------------------------------------- | -------------------------------------------------- |
+| 음성 인식 (STT) | [🎬 영상 보기](images/connectWatchSTT.mp4)         | [🎬 영상 보기](images/connectPhoneSTT.mp4)         |
+| 답변 추천       | [🎬 영상 보기](images/connectWatchRecommend.mp4)   | [🎬 영상 보기](images/connectPhoneRecommend.mp4)   |
+| 단어 교체       | [🎬 영상 보기](images/connectWatchChange.mp4)      | [🎬 영상 보기](images/connectPhoneChange.mp4)      |
+| 대화 목록       | [🎬 영상 보기](images/connectWatchList.mp4)         | [🎬 영상 보기](images/connectPhoneList.mp4)         |
+| 이름 알림       | [🎬 영상 보기](images/connectWatchAlarmName.mp4)   | [🎬 영상 보기](images/connectPhoneAlarmName.mp4)   |
 
 ## 🧑‍💻 담당 역할
 
