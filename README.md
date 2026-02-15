@@ -10,7 +10,7 @@
 > React Native 기반 악기 중고거래 플랫폼 (iOS / Android 동시 배포)
 
 - 기간: 2025.07. ~ 2025.10.
-- 역할: 프론트엔드 리드 / 앱 배포 및 운영
+- 역할: 프론트엔드 리더 / 앱 배포 및 운영
 - 기술: React Native, TypeScript, Zustand, Firebase, TalkPlus, Danal API
 - 주요 기능: 실시간 채팅, 본인인증, 매물 등록/검색, 푸시 알림
 - 배포: Google Play / Apple App Store
