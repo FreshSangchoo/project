@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="corner_radius">20dp</dimen>
-    <dimen name="settings_item_elevation">1dp</dimen>
-</resources>
