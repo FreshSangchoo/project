@@ -1,0 +1,5 @@
+<!-- res/drawable/round_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" />
+    <corners android:radius="125dp" /> <!-- 반지름을 크게 설정하여 원형 모양으로 만듦 -->
+</shape>

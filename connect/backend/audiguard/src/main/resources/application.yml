@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: info
+
+spring:
+  application:
+    name: audiguard
+  config:
+    import: optional:file:.env[.properties]
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username : ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+  mvc:
+    servlet:
+      path: /api/v1
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      embedding:
+        options:
+          model:
+            embedding: ${EMBEDDING_MODEL}
+      chat:
+        options:
+          model: ${GPT_MODEL}
+          max-tokens: ${GPT_MAX_TOKENS}
+          temperature: ${GPT_TEMPERATURE}
+        base-url: ${GPT_URL}
+    vectorstore:
+      pinecone:
+        api-key: ${PINECONE_API_KEY}
+        index-name: ${PINECONE_INDEX_NAME}
+        embedding-dimension: ${PINECONE_DIMENSION}
+  neo4j:
+    uri: ${NEO4J_URI}
+    authentication:
+      username: ${NEO4J_USERNAME}
+      password: ${NEO4J_PASSWORD}
+
+rabbitmq:
+  queue:
+    name:
+      1: ${RABBITMQ_QUEUE_NAME_1}
+      2: ${RABBITMQ_QUEUE_NAME_2}
+  exchange:
+    name: ${RABBITMQ_EXCHANGE_NAME}
+  routing:
+    key:
+      1: ${RABBITMQ_ROUTING_KEY_1}
+      2: ${RABBITMQ_ROUTING_KEY_2}

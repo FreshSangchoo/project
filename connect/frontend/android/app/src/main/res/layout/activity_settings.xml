@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        app:navigationIcon="@drawable/ic_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="응급 상황"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_fire"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="2"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AFF0000"
+                        app:icon="@drawable/ic_fire"
+                        app:title="화재경보" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_ambulance"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AFF0000"
+                        app:icon="@drawable/ic_ambulance"
+                        app:title="구급차" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_civil_defense"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AFF6E06"
+                        app:icon="@drawable/ic_horn"
+                        app:title="민방위" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_dog"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AD2722D"
+                        app:icon="@drawable/ic_dog"
+                        app:title="개" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_baby"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AFFDCC3"
+                        app:icon="@drawable/ic_baby"
+                        app:title="아기 울음" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_police"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A0023FF"
+                        app:icon="@drawable/ic_police"
+                        app:title="경찰차" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_car"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A0F208B"
+                        app:icon="@drawable/ic_car"
+                        app:title="경적" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_bomb"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A000000"
+                        app:icon="@drawable/ic_bomb"
+                        app:title="폭발음" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="생활"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_knock"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AC5713D"
+                        app:icon="@drawable/ic_knock"
+                        app:title="노크" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_doorbell"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AEDEDA7"
+                        app:icon="@drawable/ic_bell"
+                        app:title="초인종" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_phone"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A31C353"
+                        app:icon="@drawable/ic_phone"
+                        app:title="전화" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_wash"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A80F6FF"
+                        app:icon="@drawable/ic_wash"
+                        app:title="세탁기" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_water"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A00AEFF"
+                        app:icon="@drawable/ic_water"
+                        app:title="물소리" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_alarm"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1AC2C2C2"
+                        app:icon="@drawable/ic_alarm"
+                        app:title="알람" />
+
+                    <com.audiguard.SettingsItemView
+                        android:id="@+id/setting_microwave"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        app:backgroundTint="#1A000000"
+                        app:icon="@drawable/ic_microwave"
+                        app:title="전자레인지" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="호칭"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setting_hojun"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:text="호준"
+                        android:textColor="@color/black"
+                        app:backgroundTint="#FFB74D"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setting_haerim"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:text="혜림"
+                        android:textColor="@color/black"
+                        app:backgroundTint="#FFB74D"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setting_jihyuk"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:text="지혁"
+                        android:textColor="@color/black"
+                        app:backgroundTint="#FFB74D"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/plus"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:textColor="@color/black"
+                        app:cornerRadius="20dp"
+                        app:icon="@drawable/ic_plus"
+                        app:iconSize="50dp" />
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

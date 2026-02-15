@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="selected_background">#E3F2FD</color>
+    <color name="unselected_background">#F5F5F5</color>
+    <color name="button_background">#FFE2CD</color>
+
+    <!-- Status colors -->
+    <color name="status_recording">#FF4CAF50</color>  <!-- Green -->
+    <color name="status_ready">#FF2196F3</color>     <!-- Blue -->
+    <color name="status_error">#FFF44336</color>     <!-- Red -->
+</resources>
