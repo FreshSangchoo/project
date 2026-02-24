@@ -1,0 +1,205 @@
+#pop-reservation-check {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pop-reservation-check .check-content,
+#pop-reservation-check .pop-content-check,
+#pop-reservation-check .person-content-check,
+#pop-reservation-check .agree,
+#pop-reservation-check .content-check-agree {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+  margin: 10px auto;
+}
+
+#pop-reservation-check .check-content {
+  width: 85%;
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#pop-reservation-check .pop-content-check {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+}
+
+#pop-reservation-check .pop-title-check {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 5px;
+}
+
+#pop-reservation-check .pop-date-check,
+#pop-reservation-check .pop-people-check {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#pop-reservation-check .title {
+  margin-right: 20px;
+  color: #8b8b8b;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+#pop-reservation-check .person-content-check {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+}
+
+#pop-reservation-check .person-content-title {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 5px;
+}
+
+#pop-reservation-check input {
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 2px;
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+#pop-reservation-check .person-name-check,
+#pop-reservation-check .person-number-check,
+#pop-reservation-check .person-email-check {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#pop-reservation-check .agree {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+}
+
+#pop-reservation-check .agree-title {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 5px;
+}
+
+#pop-reservation-check .agree-collect,
+#pop-reservation-check .agree-offer {
+  color: #8b8b8b;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#pop-reservation-check .agree-collect {
+  padding-bottom: 11px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+#pop-reservation-check .content-check-agree {
+  width: 80%;
+  color: #8b8b8b;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.2px;
+}
+
+#pop-reservation-check .reservation-fin {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#pop-reservation-check button {
+  width: 320px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}

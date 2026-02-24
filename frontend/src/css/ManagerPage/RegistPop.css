@@ -1,0 +1,501 @@
+#regist-pop {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+
+#regist-pop .step-one {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 5px 0 20px 0px;
+}
+
+#regist-pop .essential-info-title {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+#regist-pop input[type="file"] {
+  display: none;
+}
+
+#regist-pop label {
+  display: block;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#regist-pop .regist-popup-name label {
+  margin-top: 10px;
+}
+
+#regist-pop input,
+#regist-pop textarea,
+#regist-pop select,
+#regist-pop button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #8b8b8b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  overflow:hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#regist-pop select::-webkit-scrollbar {
+  display: none;
+}
+#regist-pop textarea {
+  height: auto;
+  margin-bottom: 20px;
+}
+
+#regist-pop .regist-photo {
+  border-radius: 10px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  padding: 10px;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#regist-pop .regist-photo-content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+}
+#regist-pop .regist-photo img {
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+
+#regist-pop .image-preview {
+  display: flex;
+  overflow-x: auto;
+}
+
+#regist-pop .image-preview img {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+#regist-pop .category-buttons button {
+  width: auto;
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: white;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+}
+
+#regist-pop .category-buttons button.selected {
+  background-color: #d4145a;
+  border: 0.7px solid #d4145a;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#regist-pop .category-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#regist-pop .go-next button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+#regist-pop .date-term {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#regist-pop .inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#regist-pop .inline input {
+  width: 100px;
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+}
+
+#regist-pop .inline select {
+  width: auto;
+  margin: 0 5px;
+  text-align: center;
+}
+
+#regist-pop .inline .time-input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#regist-pop .inline .time-input-group select {
+  flex: 1;
+  border: none;
+  margin: 0;
+  padding: 10px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+#regist-pop .inline .time-separator {
+  margin: 0 5px;
+}
+
+#regist-pop .inline button {
+  background-color: #d4145a;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 5px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#regist-pop .address-search {
+  border-radius: 10px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  padding: 10px;
+  color: #8b8b8b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+#regist-pop .address-modal {
+  display: none;
+}
+
+#regist-pop .address-modal.active {
+  display: block;
+}
+
+#regist-pop .regist-popup-name input {
+  margin-bottom: 20px;
+}
+
+#regist-pop .date-term-input {
+  width: 80%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#regist-pop .added-time,
+#regist-pop .added-address {
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#regist-pop .added-time-detail {
+  text-align: center;
+  align-items: center;
+  line-height: 25px;
+}
+
+/* 달력 시작 */
+#regist-pop .react-datepicker {
+  font-size: 10px;
+  width: 170px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#regist-pop .react-datepicker__month {
+  margin: 0.5rem;
+}
+
+#regist-pop .react-datepicker__day-name,
+#regist-pop .react-datepicker__day,
+#regist-pop .react-datepicker__time-name {
+  width: 1rem;
+  line-height: 1rem;
+}
+
+#regist-pop .react-datepicker__current-month {
+  font-size: 14px;
+}
+
+#regist-pop .react-datepicker-wrapper {
+  width: auto;
+  margin: 0 10px;
+}
+
+#regist-pop .react-datepicker__input-container {
+  text-align: center;
+}
+
+/* 달력 전체 배경색 및 테두리 */
+#regist-pop .react-datepicker {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+}
+
+/* 현재 월의 텍스트 스타일 */
+#regist-pop .react-datepicker__current-month {
+  color: #d4145a;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+/* 요일 이름 스타일 */
+#regist-pop .react-datepicker__day-name {
+  color: #d4145a;
+  font-size: 10px;
+  padding: 2px;
+}
+
+/* 날짜 스타일 */
+#regist-pop .react-datepicker__day {
+  color: #cacaca;
+  font-size: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 2px;
+}
+
+/* 날짜 호버 효과 */
+#regist-pop .react-datepicker__day:hover {
+  background-color: #d4145a;
+  color: white;
+}
+
+/* 선택된 날짜 스타일 */
+#regist-pop .react-datepicker__day--selected,
+#regist-pop .react-datepicker__day--selected:hover {
+  background-color: #d4145a;
+  padding: 2px;
+  color: white;
+}
+
+/* 달력 네비게이션 버튼 스타일 */
+#regist-pop .react-datepicker__navigation {
+  top: 10px;
+  line-height: 1.7rem;
+  border: none;
+}
+
+#regist-pop .react-datepicker__navigation--previous {
+  border-right-color: #d4145a;
+}
+
+#regist-pop .react-datepicker__navigation--next {
+  border-left-color: #d4145a;
+}
+
+/* 달력 네비게이션 버튼 스타일 */
+#regist-pop .react-datepicker__navigation {
+  top: 0px; /* 버튼의 위치를 조정하여 겹침 방지 */
+  line-height: 1.7rem;
+  border: none;
+  height: 30px; /* 네비게이션 버튼의 높이 */
+  width: 30px; /* 네비게이션 버튼의 너비 */
+  background-color: transparent;
+}
+
+#regist-pop .react-datepicker__navigation--previous {
+  border-right-color: #d4145a;
+  left: 10px; /* 왼쪽 버튼의 위치 */
+  border-width: 8px; /* 화살표 크기 */
+  margin-top: 5px; /* 화살표 위치 조정 */
+}
+
+#regist-pop .react-datepicker__navigation--next {
+  border-left-color: #d4145a;
+  right: 10px; /* 오른쪽 버튼의 위치 */
+  border-width: 8px; /* 화살표 크기 */
+  margin-top: 5px; /* 화살표 위치 조정 */
+}
+
+/* 달력 헤더 배경 및 구분선 제거 */
+#regist-pop .react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+}
+
+#regist-pop .react-datepicker__month {
+  margin: 0.5rem;
+  background-color: white;
+}
+
+#regist-pop .react-datepicker__day-names {
+  background-color: white;
+}
+
+/* 커스텀 헤더 스타일 */
+#regist-pop .custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#regist-pop .custom-header__date {
+  font-size: 13px;
+  font-weight: bold;
+  width: 50px;
+  color: #d4145a;
+}
+
+#regist-pop .custom-header button {
+  background: none;
+  border: none;
+  color: #d4145a;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0px;
+  padding-bottom: 2px;
+}
+
+#regist-pop .custom-header button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  padding: 0px;
+  padding-bottom: 2px;
+}
+
+/* TimePicker 커스텀 스타일 */
+#regist-pop .time-picker {
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+#regist-pop .time-picker__inputGroup {
+  padding: 0;
+  margin: 0;
+}
+
+/* 새로 추가된 스타일 */
+#regist-pop .time-input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#regist-pop .time-input-group select {
+  -webkit-appearance: none; /* 크롬, 사파리, 엣지 */
+  -moz-appearance: none; /* 파이어폭스 */
+  appearance: none; /* 기본 appearance 제거 */
+  background: none; /* 배경 제거 */
+  padding-right: 10px; /* 오른쪽 패딩 조정 */
+  text-align-last: center; /* 텍스트 가운데 정렬 */
+}
+
+#regist-pop .time-separator {
+  margin: 0 5px;
+}
+
+#regist-pop .added-time {
+  margin-top: 10px;
+}
+
+#regist-pop .added-time-detail {
+  margin-bottom: 5px;
+}
+
+#regist-pop .detail-address {
+  margin-bottom: 20px;
+}
+
+#regist-pop .address-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#regist-pop .added-address {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

@@ -1,0 +1,49 @@
+#manager-login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px;
+}
+
+#manager-login .logo {
+  width: 140px;
+  margin: 120px auto 32px;
+}
+
+#manager-login input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 12px 8px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #8B8B8B;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+#manager-login .manager-input {
+  margin-top: auto;
+}
+
+#manager-login button {
+  font-size: 16px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(144deg, #d4145a 14.64%, #fbb03b 84.24%);
+}
+
+#manager-login .login-etc {
+  margin-top: 32px;
+  margin-bottom: 120px;
+}
+
+#manager-login .login-etc a {
+  font-size: 14px;
+  color: #666;
+  border-bottom: 1px solid #666;
+}

@@ -1,0 +1,345 @@
+#my-pre-reservation-state {
+  padding: 20px;
+}
+
+#my-pre-reservation-state .title {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#my-pre-reservation-state .reservation-calendar {
+  margin-bottom: 20px;
+  color: #b3b3b3;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+#my-pre-reservation-state .react-calendar {
+  height: auto;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  padding: 10px;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+#my-pre-reservation-state .react-calendar__tile {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px;
+  transition: height 0.3s ease;
+}
+
+#my-pre-reservation-state .react-calendar abbr {
+  font-size: 12px;
+  text-decoration: none;
+}
+
+#my-pre-reservation-state .react-calendar__tile abbr {
+  border-radius: 100%;
+  width: 30px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 12px;
+}
+
+#my-pre-reservation-state .react-calendar__tile--active {
+  background: none !important;
+  border: none !important;
+}
+
+#my-pre-reservation-state .react-calendar__tile--hasActive {
+  background: none !important;
+  border: none !important;
+}
+
+#my-pre-reservation-state .react-calendar__tile--active abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+#my-pre-reservation-state .react-calendar__tile--hasActive abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+}
+
+#my-pre-reservation-state .today {
+  background: none !important;
+  border: none !important;
+}
+
+#my-pre-reservation-state .today abbr {
+  background-color: #fbb03b !important;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+#my-pre-reservation-state .react-calendar__navigation {
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+#my-pre-reservation-state .react-calendar__navigation__label {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+#my-pre-reservation-state .react-calendar__navigation__prev-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#my-pre-reservation-state .react-calendar__navigation__next-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#my-pre-reservation-state .react-calendar__navigation__prev2-button {
+  display: none;
+}
+
+#my-pre-reservation-state .react-calendar__navigation__next2-button {
+  display: none;
+}
+
+#my-pre-reservation-state .search {
+  position: relative;
+  margin-bottom: 15px;
+  display: flex;
+  width: 100%;
+}
+
+#my-pre-reservation-state .search input {
+  flex-grow: 1;
+  height: 30px;
+  color: #8b8b8b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10px 40px 10px 10px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+}
+
+#my-pre-reservation-state .search img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#my-pre-reservation-state .list .list-title {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 2px solid #000;
+  margin-bottom: 10px;
+}
+
+#my-pre-reservation-state .list .list-title select {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  outline: none;
+}
+
+#my-pre-reservation-state .list .list-content {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "NanumSquare Neo ";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px 10px 0px;
+}
+
+#my-pre-reservation-state .list-title .name,
+#my-pre-reservation-state .list-content .name {
+  width: 25%;
+}
+#my-pre-reservation-state .list-title .number,
+#my-pre-reservation-state .list-content .number {
+  width: 40%;
+}
+#my-pre-reservation-state .list-title .time,
+#my-pre-reservation-state .list-content .time {
+  width: 20%;
+}
+#my-pre-reservation-state .list-title .is-enter,
+#my-pre-reservation-state .list-content .is-enter {
+  width: 20%;
+}
+#my-pre-reservation-state .list-content .is-enter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#my-pre-reservation-state .list-content .is-enter input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #cacaca;
+  outline: none;
+  cursor: pointer;
+}
+
+#my-pre-reservation-state
+  .list-content
+  .is-enter
+  input[type="checkbox"]:checked {
+  background-color: #d4145a;
+  border: 1px solid #d4145a;
+}
+
+#my-pre-reservation-state .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#my-pre-reservation-state .modal-content {
+  background: #fff;
+  padding: 20px 20px 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#my-pre-reservation-state .modal-content p {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px 20px 5px 20px;
+}
+
+#my-pre-reservation-state .modal-content .buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #cacaca;
+}
+
+#my-pre-reservation-state .modal-content button {
+  width: 50%;
+  height: 50px;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: #fff;
+}
+
+#my-pre-reservation-state .modal-content div {
+  color: #8b8b8b;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#my-pre-reservation-state .modal-content .ok {
+  color: #d4145a;
+  border-left: 1px solid #cacaca;
+}

@@ -1,0 +1,229 @@
+/* 수정 모드 입력 폼 스타일 */
+#pop-detail .edit-form .edit-date input {
+  width: 120px;
+  margin-top: 5px;
+}
+#pop-detail .edit-form .edit-date input {
+  text-align: center;
+  width: 120px;
+  margin: 0 10px 0 10px;
+}
+
+#pop-detail .edit-input {
+  width: calc(100% - 40px);
+  padding: 8px;
+  margin-bottom: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#pop-detail .edit-textarea {
+  width: calc(100% - 40px);
+  height: 100px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+#pop-detail .edit-checkbox {
+  margin-top: 5px;
+}
+
+#pop-detail .edit-button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  background-color: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 수정 취소, 완료 버튼 스타일 */
+#pop-detail .edit-buttons {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+#pop-detail .cancel-button {
+  background: white;
+  border: none;
+  color: black;
+  padding: 10px;
+  border: 1px solid #8b8b8b;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#pop-detail .save-button {
+  background: #d4145a;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#pop-detail .slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#pop-detail .slider-container img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .slider-container,
+  .slider-slide,
+  .slider-slide img {
+    height: 100vw;
+    width: 100vw;
+    max-height: 100vw;
+  }
+}
+
+#pop-detail .back-button {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#pop-detail .like-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#pop-detail .main-info {
+  padding-left: 20px;
+  padding-top: 20px;
+  height: 85px;
+  flex-shrink: 0;
+  margin: 5px;
+}
+
+#pop-detail .title {
+  padding-bottom: 5px;
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-left: 2px;
+}
+
+#pop-detail .date {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-bottom: 5px;
+  margin-left: 2px;
+}
+
+#pop-detail .score-like {
+  display: flex;
+  height: 25px;
+  justify-content: left;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#pop-detail .score {
+  color: #222;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  margin-right: 10px;
+}
+
+#pop-detail .score img {
+  margin-right: 2px;
+}
+
+#pop-detail .like {
+  color: #222;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+}
+
+#pop-detail .like img {
+  margin-right: 2px;
+}
+
+#pop-detail .tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex-shrink: 0;
+  position: relative;
+  margin: 0 16px;
+  border-bottom: 1px solid #8b8b8b;
+}
+
+#pop-detail .tab div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  margin: 0;
+  background: none;
+  border: none;
+  color: #8b8b8b;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+#pop-detail .tab div:hover {
+  color: #d4145a;
+}
+
+#pop-detail .tab div.active {
+  color: #d4145a;
+  border-bottom: 1px solid #d4145a;
+}
+
+#pop-detail .tab-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: calc(100vh - 50px);
+  box-sizing: border-box;
+}

@@ -1,0 +1,154 @@
+#my-onsite-reservation-state {
+  padding: 20px;
+}
+#my-onsite-reservation-state .title {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#my-onsite-reservation-state .tab {
+  margin-bottom: 10px;
+}
+#my-onsite-reservation-state .tab select {
+  width: 78px;
+  padding: 5px;
+  border: 1px solid #cacaca;
+}
+#my-onsite-reservation-state .list-title {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 2px solid #000;
+  margin-bottom: 10px;
+}
+#my-onsite-reservation-state .list-title .order,
+#my-onsite-reservation-state .list-content .order {
+  width: 15%;
+}
+#my-onsite-reservation-state .list-title .name,
+#my-onsite-reservation-state .list-content .name {
+  width: 30%;
+}
+#my-onsite-reservation-state .list-title .personnel,
+#my-onsite-reservation-state .list-content .personnel {
+  width: 15%;
+}
+#my-onsite-reservation-state .list-title .is-enter,
+#my-onsite-reservation-state .list-content .is-enter-buttons {
+  width: 40%;
+}
+#my-onsite-reservation-state .list-content {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px 10px 0px;
+}
+#my-onsite-reservation-state .list-content .is-enter-buttons button {
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 6px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  padding: 10px 13px 10px 13px;
+  margin: 0 2px 0 3px;
+}
+#my-onsite-reservation-state .list-content .is-enter-buttons .entered {
+  background: #d4145a;
+  color: #fff;
+  border-color: #d4145a;
+}
+#my-onsite-reservation-state .list-content .is-enter-buttons .no-entered {
+  background: #d4145a;
+  color: #fff;
+  border-color: #d4145a;
+}
+#my-onsite-reservation-state .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#my-onsite-reservation-state .modal-content {
+  background: #fff;
+  padding: 20px 10px 5px 10px;
+  border-radius: 20px;
+  text-align: center;
+}
+#my-onsite-reservation-state .modal-content p {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px 20px 5px 20px;
+}
+#my-onsite-reservation-state .modal-content div {
+  color: #8b8b8b;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+#my-onsite-reservation-state .modal-content .buttons {
+  margin-top: 30px;
+  margin-bottom: 5px;
+  border-top: 1px solid #cacaca;
+}
+#my-onsite-reservation-state .modal-content button {
+  width: 50%;
+  height: 50px;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: #fff;
+}
+#my-onsite-reservation-state .modal-content .ok {
+  color: #d4145a;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  border-left: 1px solid #cacaca;
+  background: #fff;
+}

@@ -1,0 +1,52 @@
+#login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px;
+}
+
+#login .logo {
+  width: 140px;
+  margin: 120px auto 0;
+}
+
+#login button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+#login svg {
+  width: 24px;
+  margin-right: 8px;
+}
+
+#login img {
+  width: 28px;
+  margin-right: 8px;
+}
+
+.kakao-login {
+  background-color: #FEE600;
+  margin-top: auto;
+}
+
+.naver-login {
+  background-color: #1CC839;
+  color: white;
+}
+
+.login-etc {
+  margin: 16px auto 120px;
+}
+
+.login-etc a {
+  font-size: 14px;
+  color: #666;
+  border-bottom: 1px solid #666;
+}

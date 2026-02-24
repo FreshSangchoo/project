@@ -1,0 +1,112 @@
+#pop-detail-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#pop-detail-reviews .pop-review {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+#pop-detail-reviews .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#pop-detail-reviews .profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#pop-detail-reviews .nickname {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 3px;
+}
+
+#pop-detail-reviews .review-date {
+  color: #8b8b8b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#pop-detail-reviews .review-images {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#pop-detail-reviews .review-images img {
+  height: 200px;
+  max-width: 240px;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+#pop-detail-reviews .review-title {
+  font-size: 17px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 24px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#pop-detail-reviews .review-content {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 5px 0px 14px 0px;
+}
+
+#pop-detail-reviews .no-reviews {
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+#pop-detail-reviews .no-reviews img {
+  margin-bottom: 32px;
+}
+#pop-detail-reivews .no-reviews p {
+  color: #8b8b8b;
+}
+
+#pop-detail-reviews .load-more {
+  width: 100px;
+  padding: 10px 20px;
+  margin-top: -40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #d4145a;
+  color: white;
+  font-family: "NanumSquare Neo ";
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 20px;
+}

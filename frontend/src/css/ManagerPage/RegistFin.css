@@ -1,0 +1,83 @@
+#pop-regist-finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  height: 80vh;
+  margin: 0 auto;
+}
+#pop-regist-finish .upside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+
+#pop-regist-finish .contentside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#pop-regist-finish .title {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+#pop-regist-finish img {
+  margin-bottom: 20px;
+}
+
+#pop-regist-finish .finish-ment {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 20px auto;
+}
+
+#pop-regist-finish .check-ment {
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+
+#pop-regist-finish .regist-fin {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#pop-regist-finish .regist-fin button {
+  width: 320px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

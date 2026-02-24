@@ -1,0 +1,94 @@
+# server {
+#   listen 80;
+#   server_name ${HOST};
+#   return 301 https://${HOST}$request_uri;
+
+# }
+
+#default: user nobody nobody
+# worker_processes  auto;
+#default: 1
+
+log_format  proxy_log  '$remote_addr - $remote_user [$time_local] '
+                         '"$request" Status:$status Body:$body_bytes_sent '
+                         'Referer:"$http_referer" "$http_user_agent" '
+                         'Backend:$proxy_host Status:$upstream_status';
+
+#FIXME: http server should be removed before deploying application on EC2
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  ${HOST};
+
+    location / {
+        root /usr/share/nginx/html/;
+        index  index.html;
+        try_files $uri $uri/ /index.html?$args;
+    }
+
+    location /api/rankings/ {
+                access_log /var/log/nginx/access.log proxy_log;
+                proxy_pass  ${BACKEND_RANKING_URL}/api/rankings/;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /ws-stomp/ {
+        proxy_pass ${BACKEND_URL}/ws-stomp/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/ {
+        access_log /var/log/nginx/access.log proxy_log;
+        proxy_pass  ${BACKEND_URL}/api/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /login/oauth2/ {
+        access_log /var/log/nginx/access.log proxy_log;
+        proxy_pass  ${BACKEND_URL}/login/oauth2/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/login {
+        proxy_pass ${BACKEND_URL}/login;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /login/manager {
+        proxy_pass ${BACKEND_URL}/login/manager;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /oauth2/ {
+        access_log /var/log/nginx/access.log proxy_log;
+        proxy_pass  ${BACKEND_URL}/oauth2/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+}

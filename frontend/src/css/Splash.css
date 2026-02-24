@@ -1,0 +1,11 @@
+#splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background: linear-gradient(162deg, #D4145A 0%, #FBB03B 100%);
+}

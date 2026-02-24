@@ -1,0 +1,211 @@
+#regist-pop-optional {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#regist-pop-optional .optional-info-title {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+#regist-pop-optional .step-two {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#regist-pop-optional .sns {
+  margin-bottom: 20px;
+}
+#regist-pop-optional .sns .sns-title {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+#regist-pop-optional .sns input {
+  padding-left: 10px;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 6px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  width: 320px;
+  height: 36px;
+}
+#regist-pop-optional .homepage {
+  margin-bottom: 20px;
+}
+#regist-pop-optional .homepage .homepage-title {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+#regist-pop-optional .homepage input {
+  padding-left: 10px;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 6px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  width: 320px;
+  height: 36px;
+}
+#regist-pop-optional .more-details {
+  margin-bottom: 10px;
+}
+#regist-pop-optional .more-details-title {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+#regist-pop-optional .more-details .parking,
+#regist-pop-optional .more-details .fee,
+#regist-pop-optional .more-details .pet,
+#regist-pop-optional .more-details .food,
+#regist-pop-optional .more-details .photo,
+#regist-pop-optional .more-details .age {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#regist-pop-optional .more-details .parking div,
+#regist-pop-optional .more-details .fee div,
+#regist-pop-optional .more-details .pet div,
+#regist-pop-optional .more-details .food div,
+#regist-pop-optional .more-details .photo div,
+#regist-pop-optional .more-details .age div {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#regist-pop-optional .more-details .parking button,
+#regist-pop-optional .more-details .fee button,
+#regist-pop-optional .pet button,
+#regist-pop-optional .more-details .food button,
+#regist-pop-optional .more-details .photo button,
+#regist-pop-optional .more-details .age button {
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 6px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  width: 100px;
+  height: 36px;
+  margin-left: 10px;
+}
+#regist-pop-optional .more-details .buttons button.active {
+  border: none;
+  border-radius: 10px;
+  background: #d4145a;
+  color: #fff;
+}
+
+#regist-pop-optional .omit-or-regist {
+  display: flex;
+  justify-content: center;
+}
+#regist-pop-optional .omit-or-regist .omit {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #b3b3b3 0%, #d6d6d6 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  width: 160px;
+  height: 40px;
+  margin: 10px 5px 5px 5px;
+}
+#regist-pop-optional .omit-or-regist .regist {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  width: 160px;
+  height: 40px;
+  margin: 10px 5px 5px 5px;
+}
+
+/* 모달 스타일 추가 */
+#regist-pop-optional .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#regist-pop-optional .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 74%;
+  height: auto;
+}
+#regist-pop-optional .modal-header {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+#regist-pop-optional .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+#regist-pop-optional .modal-footer button {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+#regist-pop-optional .modal-footer .cancel {
+  background-color: #b3b3b3;
+  color: white;
+}
+#regist-pop-optional .modal-footer .confirm {
+  background-color: #d4145a;
+  color: white;
+}

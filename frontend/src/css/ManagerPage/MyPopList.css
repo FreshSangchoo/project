@@ -1,0 +1,123 @@
+/* MyReservattionList */
+#my-pop-list {
+  margin: 32px 0;
+}
+
+#my-pop-list h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 20px 32px;
+}
+
+#my-pop-list .registed-tab {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #8b8b8b;
+}
+
+#my-pop-list .registed-tab div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 13px;
+  height: 100%;
+  flex: 1;
+  color: #8b8b8b;
+  position: relative;
+  bottom: -1px;
+}
+
+#my-pop-list .registed-tab .active {
+  color: #d4145a;
+  border-bottom: 1px solid #d4145a;
+  bottom: -1px;
+}
+
+/* OnsiteReservation */
+#onsite-registed-list {
+  margin: 0 20px;
+}
+
+.popup-card {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+}
+#onsite-registed-list .popup-image,
+#pre-pop-list .popup-image,
+#finished-pop-list .popup-image {
+  width: 80px;
+  height: 80px;
+  margin: 2px;
+  border-radius: 10px;
+}
+#onsite-registed-list .popup-image img,
+#pre-pop-list .popup-image img,
+#finished-pop-list .popup-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.popup-details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.popup-details .popup-name {
+  color: #222;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.popup-details .popup-date {
+  color: #222;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.go-detail-page {
+  margin-top: 8px;
+  font-size: 12px;
+  display: flex;
+  color: #6d6d6d;
+  font-weight: 700;
+}
+.go-detail-page img {
+  width: 12px;
+  height: 12px;
+}
+
+#pre-pop-list,
+#finished-pop-list {
+  margin: 0 20px;
+}
+
+.none-registed-contents {
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+
+.none-registed-contents img {
+  margin-bottom: 32px;
+}
+
+.none-registed-contents p {
+  color: #8b8b8b;
+}

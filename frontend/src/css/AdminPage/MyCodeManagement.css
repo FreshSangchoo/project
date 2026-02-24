@@ -1,0 +1,160 @@
+#my-code-management {
+  margin: 32px 20px;
+}
+
+#my-code-management h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+#my-code-management .manager-search {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+#my-code-management input {
+  width: 100%;
+  padding: 12px 40px 12px 8px;
+  border-radius: 8px;
+  background: #FFF;
+  border: none;
+  outline: none;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  box-sizing: border-box;
+}
+
+#my-code-management .manager-search svg {
+  position: absolute;
+  top: 12px; right: 12px;
+}
+
+#my-code-management table {
+  width: 100%;
+  font-size: 14px;
+}
+
+#my-code-management th {
+  padding-bottom: 12px;
+  border-bottom: 1px solid black;
+}
+
+#my-code-management td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 16px 8px;
+  line-height: 1.3;
+  border-bottom: 0.5px solid black;
+}
+
+#my-code-management td:first-child {
+  font-weight: 700;
+}
+
+#my-code-management td:last-child {
+  padding: 0 4px;
+}
+
+.manager-modal {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  padding: 32px 0;
+  background-color: white;
+  border-radius: 20px;
+}
+
+/* Create */
+#create-modal h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.create-manager {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  box-sizing: border-box;
+}
+
+.create-manager > div {
+  margin-bottom: 8px;
+}
+
+.create-manager label {
+  display: inline-block;
+  width: 70px;
+}
+
+.create-manager input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #6d6d6d;
+  padding: 8px;
+}
+
+#create-modal .buttons {
+  margin-top: 24px;
+  text-align: center;
+}
+
+#create-modal .buttons button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 0 6px;
+}
+
+/* Delete */
+#delete-modal {
+  text-align: center;
+}
+
+#delete-modal .buttons {
+  margin-top: 24px;
+  text-align: center;
+}
+
+#delete-modal .buttons button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 0 6px;
+}
+
+/* View */
+#view-modal {
+  padding: 0 20px;
+}
+
+#view-modal h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+#view-modal p {
+  margin-bottom: 8px;
+}
+
+#view-modal .id, #view-modal .nickname {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#view-modal h3 {
+  font-size: 16px;
+  margin: 16px 0 8px;
+}
+
+#view-modal .pop-item {
+  line-height: 1.3;
+  font-size: 14px;
+}

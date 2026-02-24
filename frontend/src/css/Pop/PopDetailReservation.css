@@ -1,0 +1,234 @@
+#pop-reservation .content-title {
+  color: #222;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#pop-reservation .react-calendar {
+  border: none !important;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  padding: 10px;
+}
+
+#pop-reservation .react-calendar__tile {
+  aspect-ratio: 1; /* 가로와 세로 비율을 같게 설정 */
+  height: auto; /* 높이를 자동으로 설정 */
+  max-width: 100%; /* 최대 너비를 100%로 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pop-reservation .react-calendar__tile abbr {
+  border-radius: 100%;
+  text-align: center;
+}
+
+#pop-reservation .pop-calendar,
+#pop-reservation .time,
+#pop-reservation .people-section,
+#pop-reservation .notice-section {
+  margin-bottom: 20px;
+}
+
+#pop-reservation .pop-calendar {
+  color: #b3b3b3;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#pop-reservation .react-calendar__tile--active {
+  background: none !important; /* 네모 배경색 제거 */
+  border: none !important; /* 네모 경계색 제거 */
+}
+
+#pop-reservation .react-calendar__tile--hasActive {
+  background: none !important; /* 네모 배경색 제거 */
+  border: none !important; /* 네모 경계색 제거 */
+}
+
+#pop-reservation .react-calendar__tile--active abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+#pop-reservation .react-calendar__tile--hasActive abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.sunday {
+  color: #fbb03b !important;
+}
+
+.saturday {
+  color: #fbb03b !important;
+}
+
+.today {
+  background: none !important; /* 네모 배경색 제거 */
+  border: none !important; /* 네모 경계색 제거 */
+}
+
+.today abbr {
+  background-color: #fbb03b !important;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.react-calendar__navigation__prev-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+}
+.react-calendar__navigation__next-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+}
+.react-calendar__navigation__prev2-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+}
+.react-calendar__navigation__next2-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+#pop-reservation .time-buttons {
+  color: #222;
+  text-align: justify;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 20px;
+}
+
+#pop-reservation .time-buttons button {
+  width: 72px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  cursor: pointer;
+}
+
+#pop-reservation .time-buttons .selected-time {
+  background-color: #d4145a;
+  color: white;
+}
+
+#pop-reservation .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pop-reservation .people-counter {
+  width: 264px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#pop-reservation .people-counter button {
+  width: 72px;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d4145a;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#pop-reservation .people-counter span {
+  min-width: 120px;
+  margin: 0 10px;
+  color: #222;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#pop-reservation .caution {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  color: #222;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: pre-line;
+}
+
+#pop-reservation .next {
+  display: flex;
+  justify-content: center;
+}
+
+#pop-reservation .next button {
+  width: 320px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 20px;
+}

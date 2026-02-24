@@ -1,0 +1,342 @@
+#my-notification {
+  margin-top: 10px;
+  padding: 20px;
+}
+#my-notification .push-title {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+#my-notification .content-type {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 2px solid #000;
+}
+#my-notification .content-type .time-column {
+  width: 21%;
+}
+#my-notification .content-type .status-column {
+  width: 17%;
+}
+#my-notification .content-contents {
+  display: flex;
+  flex-direction: column;
+}
+#my-notification .content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+#my-notification .content-row > div {
+  text-align: center;
+}
+#my-notification .content-row .time,
+#my-notification .content-row .title,
+#my-notification .content-row .status {
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  letter-spacing: -0.2px;
+}
+#my-notification .content-row .time {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+#my-notification .content-row .title {
+  color: #000;
+  width: 70%;
+  text-align: left;
+  padding: 0 10px 0 10px;
+}
+#my-notification .content-row .status-waiting,
+#my-notification .content-row .status-completed {
+  width: 20%;
+}
+#my-notification .status-waiting {
+  color: #fbb03b;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  letter-spacing: -0.2px;
+}
+#my-notification .status-completed {
+  color: #d4145a;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  letter-spacing: -0.2px;
+}
+#my-notification .add-notification {
+  position: fixed;
+  bottom: 75px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(144deg, #d4145a 14.64%, #fbb03b 84.24%);
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.4));
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#my-notification .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#my-notification .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 70%;
+  height: auto;
+}
+#my-notification .modal-header {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#my-notification .modal-body .modal-row {
+  margin-bottom: 15px;
+}
+#my-notification .modal-body label {
+  display: block;
+  margin-bottom: 5px;
+  color: #8b8b8b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#my-notification .modal-body .time-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#my-notification .modal-body label div {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+}
+#my-notification .modal-body .time-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  border: 0.7px solid #cacaca;
+  border-radius: 6px;
+  padding: 8px;
+  align-items: end;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 70%;
+}
+#my-notification .modal-body select,
+#my-notification .modal-body input,
+#my-notification .modal-body textarea {
+  width: 92%;
+  padding: 8px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 6px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+  color: #8b8b8b;
+}
+
+#my-notification .modal-body input {
+  height: 18px;
+}
+#my-notification .modal-body textarea {
+  min-height: 100px;
+}
+#my-notification .modal-body .time-inputs select {
+  height: 18px;
+  padding: 0 1px 0 0;
+  text-align: right;
+  flex: 1;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  background: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+#my-notification .modal-body .time-inputs select::-webkit-scrollbar {
+  display: none;
+}
+#my-notification .modal-body .time-inputs select[name="year"] {
+  flex: 1.8;
+}
+#my-notification .modal-body .time-inputs select[name="hour"] {
+  padding-left: 5px;
+}
+#my-notification .modal-body .time-inputs select[name="hour"],
+#my-notification .modal-body .time-inputs select[name="minute"] {
+  text-align: center;
+  align-items: center;
+}
+#my-notification .modal-body .time-inputs select::-ms-expand {
+  display: none;
+}
+#my-notification .modal-body .time-inputs select:focus {
+  min-width: 36px;
+}
+#my-notification .modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+#my-notification .modal-footer button {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+#my-notification .modal-footer .submit {
+  background-color: #d4145a;
+  color: white;
+}
+#my-notification .selected-date {
+  margin-top: 10px;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+#my-notification .no-notifications {
+  text-align: center;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+#my-notification .modal-header {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+#my-notification .modal-body > div,
+#my-notification .modal-body > label > div,
+#my-notification .modal-body .modal-row .title {
+  color: #000;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+}
+
+#my-notification .modal-body .modal-row .content {
+  color: #6d6d6d;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+#my-notification .modal-footer .submit,
+#my-notification .modal-footer .edit {
+  background-color: #d4145a;
+  color: white;
+}
+
+#my-notification .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+#my-notification .modal-body .time-inputs select option {
+  font-size: 14px;
+  height: 20px;
+}
+#my-notification .delete-icon {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#my-notification .action-column {
+  width: 17%;
+}
+
+#my-notification .content-row .actions {
+  width: 20%;
+  text-align: center;
+}
+
+#my-notification .content-row .actions button {
+  border: 2px solid #d4145a;
+  background-color: white;
+  color: #d4145a;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 0px 7px 0px 7px;
+  cursor: pointer;
+}

@@ -1,0 +1,170 @@
+services:
+  mysql:
+    image: mysql
+    restart: always
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    #FIXME: ports should be removed before deploying application on EC2
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/initdb:/docker-entrypoint-initdb.d
+      - ./db/mysql/config:/etc/mysql/conf.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  nginx:
+    image: nginx:poppin
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    restart: always
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - app_home:/usr/share/nginx/html
+      - ./uploads:/usr/share/nginx/html/uploads
+    depends_on:
+      frontend-builder:
+        condition: service_completed_successfully
+  redis:
+    image: redis
+    restart: always
+    #FIXME: ports should be removed before deploying application on EC2
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+  mongodb:
+    image: mongo
+    restart: always
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    #FIXME: ports should be removed before deploying application on EC2
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db/mongodb/data:/data/db
+      - ~/mongod.conf:/etc/mongod.conf
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "'db.runCommand({ ping: 1 })'", "--quiet"]
+  backend-builder:
+    image: eclipse-temurin:17
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/opt/app
+      - gradle_home:/opt/app/build
+    working_dir: /opt/app
+    command: "./gradlew build -x test"
+  backend:
+    image: eclipse-temurin:17
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    volumes:
+      - gradle_home:/opt/app/build
+      - ./uploads:/uploads  
+    command: "java -jar /opt/app/build/libs/poppin-0.0.1-SNAPSHOT.jar"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      backend-builder:
+        condition: service_completed_successfully
+    develop:
+      watch:
+        - path: gradle_home
+          action: sync+restart
+          target: /opt/app/build
+  frontend-builder:
+    image: node
+    volumes:
+      - ./frontend:/opt/app
+      - app_home:/opt/app/dist
+    working_dir: /opt/app
+    command: sh -c "npm i && npm run build"
+  zookeeper:
+    image: bitnami/zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zookeeper/data:/bitnami
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: bitnami/kafka
+    ports:
+      - "9092:9092"
+    volumes:
+      - ./kafka/data:/bitnami
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+    depends_on:
+      - zookeeper
+  backend-ranking-builder:
+    image: eclipse-temurin:17
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    volumes:
+      - ./backend-ranking:/opt/app
+      - gradle_ranking:/opt/app/build
+    working_dir: /opt/app
+    command: "./gradlew build -x test"
+  backend-ranking:
+    image: eclipse-temurin:17
+    #TODO: Replace env_file with detailed environment variables using the environment section
+    env_file:
+      - .env
+    volumes:
+      - gradle_ranking:/opt/app/build
+    command: "java -jar /opt/app/build/libs/ranking-service-0.0.1-SNAPSHOT.jar"
+    depends_on:
+      mysql-ranking:
+        condition: service_healthy
+      redis-ranking:
+        condition: service_healthy
+      backend-ranking-builder:
+        condition: service_completed_successfully
+    develop:
+      watch:
+        - path: gradle_ranking
+          action: sync+restart
+          target: /opt/app/build
+  mysql-ranking:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_RANKING_ROOT_PASSWORD
+    #FIXME: ports should be removed before deploying application on EC2
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./db/mysql-ranking/data:/var/lib/mysql
+      - ./db/mysql-ranking/initdb:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  redis-ranking:
+    image: redis
+    restart: always
+    #FIXME: ports should be removed before deploying application on EC2
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+volumes:
+  gradle_home:
+  app_home:
+  gradle_ranking:

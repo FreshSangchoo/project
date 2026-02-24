@@ -1,0 +1,142 @@
+#mappage {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0px;
+  position: relative;
+}
+
+#mappage .title {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#mappage .buttons {
+  margin-left: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #222;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#mappage .buttons .button {
+  border-radius: 20px;
+  border: 1px solid #000;
+  background-color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #222;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#mappage .buttons .button.active {
+  border: 1px solid #d4145a;
+  background-color: #d4145a;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#mappage .map {
+  width: 100%;
+  height: calc(100vh - 250px);
+}
+
+#mappage .current-location {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 0.25px solid #222;
+  background: #fff;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  cursor: pointer;
+  transition: bottom 0.1s ease;
+}
+
+#mappage .info {
+  display: flex;
+  justify-content: center;
+}
+
+#mappage .store-info {
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 60px);
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  z-index: 10;
+  margin: 0 10px;
+  height: 80px;
+}
+
+#mappage .store-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+#mappage .store-details {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(100% - 100px);
+}
+
+#mappage .store-details h2 {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 0;
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#mappage .store-details p {
+  color: #000;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#mappage .store-details .open {
+  color: #d4145a;
+}
+
+#mappage .store-details .upcoming {
+  color: #b3b3b3;
+}

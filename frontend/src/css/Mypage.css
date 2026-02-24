@@ -1,0 +1,543 @@
+/* Mypage */
+#my-page {
+  margin: 32px 25px;
+  height: calc(100vh - 176px);
+}
+
+/* login-section : 로그인 전 */
+.login-section {
+  margin-top: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.login-section a {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: black;
+}
+
+.login-before {
+  margin-right: 16px;
+}
+
+.login-section span {
+  margin-right: 8px;
+}
+
+/* login-section : 로그인 후 */
+.mypage-profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+  border: 1px solid #d9d9d9;
+}
+
+.mypage-profile-image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.mypage-profile {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.mypage-nickname {
+  font-size: 18px;
+  font-weight: 800;
+  color: #d4145a !important;
+  margin-right: 2px !important;
+}
+
+.logout {
+  color: #6d6d6d !important;
+  font-size: 14px !important;
+}
+
+.profile-update {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.login-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* mypage-menu-section */
+.mypage-menu-section {
+  padding: 32px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.mypage-menu-section li {
+  margin-bottom: 24px;
+}
+
+.mypage-menu-section li:last-child {
+  margin-bottom: 0;
+}
+
+.mypage-menu-section a {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
+/* notice-section */
+.notice-section {
+  padding: 32px 0;
+}
+
+.notice-section li:first-child {
+  margin-bottom: 24px;
+}
+
+.notice-section li:last-child {
+  margin-top: 24px;
+}
+
+.notice-section a {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
+/* etc-section */
+.etc-section {
+  width: calc(100% - 50px);
+  text-align: center;
+  position: absolute;
+  bottom: 80px;
+  font-size: 12px;
+  color: #6d6d6d;
+}
+
+.etc-section span {
+  margin: 0 4px;
+}
+
+/* UserUpdate */
+#user-update {
+  margin: 88px 20px;
+}
+
+#user-update .update-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+#user-update .profile-black {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+#user-update .update-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4145a;
+}
+
+#user-update .update-image svg {
+  position: absolute;
+  bottom: 40%;
+  left: 47%;
+  z-index: 5;
+}
+
+.update-nickname label,
+.update-email label,
+.update-phone-number label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 16px;
+}
+
+#user-update input[type="text"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 0 4px 8px;
+  box-sizing: border-box;
+}
+
+#user-update .update-nickname input {
+  width: calc(100% - 70px);
+}
+
+.update-nickname {
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 8px;
+}
+
+.nickname-check {
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.nickname-check.success {
+  color: green;
+}
+
+.nickname-check.error {
+  color: red;
+}
+
+.update-email,
+.update-phone-number {
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 32px;
+}
+
+.update-category {
+  margin-bottom: 32px;
+}
+
+#user-update .update-nickname {
+  position: relative;
+}
+
+#user-update .update-nickname button {
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #d4145a;
+  color: white;
+  font-size: 12px;
+}
+
+#user-update h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 16px;
+}
+
+#user-update .update-category button {
+  width: auto;
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: white;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0.7px solid #cacaca;
+  background: #fff;
+}
+
+#user-update .update-category button.selected {
+  background-color: #d4145a;
+  border: 0.7px solid #d4145a;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#user-update .update-category button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#user-update input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+#user-update .update-marketing,
+#user-update .update-push {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+#user-update .update-agree p {
+  font-size: 12px;
+  color: #6d6d6d;
+  margin-bottom: 8px;
+}
+
+/* MyLikeList */
+#my-like-list {
+  margin: 32px 20px;
+}
+
+#my-like-list h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.like-contents-none {
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+
+.like-contents-none svg {
+  margin-bottom: 32px;
+}
+
+.like-contents-none p {
+  color: #8b8b8b;
+}
+
+/* PopMedium03 */
+#pop-medium-03 {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 16px 0;
+}
+
+#pop-medium-03 .pop-image-03 {
+  width: 90px;
+  height: 90px;
+  margin-right: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#pop-medium-03 .pop-image-03 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#pop-medium-03 .pop-name-03 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  width: calc(100%);
+  margin-bottom: 8px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+#pop-medium-03 .pop-date-03 {
+  font-size: 12px;
+}
+
+/* MyReviewList */
+#my-review-list {
+  margin: 32px 0;
+}
+
+#my-review-list h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 20px 32px;
+}
+
+.my-review-content {
+  margin: 0 20px;
+}
+
+/* MyReservattionList */
+#my-reservation-list {
+  margin: 32px 0;
+}
+
+#my-reservation-list h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 20px 32px;
+}
+
+#my-reservation-list .reservation-tab {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #8b8b8b;
+}
+
+#my-reservation-list .reservation-tab div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+  flex: 1;
+  color: #8b8b8b;
+  position: relative;
+}
+
+#my-reservation-list .reservation-tab .active {
+  color: #d4145a;
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d4145a;
+}
+
+#pre-reservation-list {
+  margin: 0 20px;
+}
+
+#reservation-modal-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 32px;
+  padding: 32px 0;
+  background-color: white;
+  border-radius: 20px;
+}
+
+#reservation-modal-box .modal-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#reservation-modal-box img {
+  width: 50%;
+  margin-bottom: 16px;
+}
+
+#reservation-modal-box .title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  width: 80%;
+  line-height: 1.4;
+  text-align: center;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+#reservation-modal-box .reservation-info p {
+  margin-top: 8px;
+}
+
+/* OnsiteReservation */
+#onsite-reservation-list {
+  margin: 0 20px;
+}
+
+#onsite-reservation-list a {
+  color: black;
+}
+
+#onsite-reservation-list .waiting-link {
+  margin-top: 8px;
+  font-size: 12px;
+  display: flex;
+  color: #6d6d6d;
+  font-weight: 700;
+}
+
+/* VisitCompletionList */
+#visit-completion-list {
+  margin: 0 20px;
+}
+
+#visit-completion-list a {
+  color: black;
+}
+
+#visit-completion-list .writing-link {
+  margin-top: 8px;
+  font-size: 12px;
+  display: flex;
+  color: #6d6d6d;
+  font-weight: 700;
+}
+
+/* MyCancelList */
+#my-cancel-list {
+  margin: 32px 20px;
+}
+
+#my-cancel-list h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+/* user-withdrawal */
+#user-withdrawal-modal-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  padding: 40px 0;
+  background-color: white;
+  border-radius: 20px;
+}
+
+#user-withdrawal-modal-box .modal-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#user-withdrawal-modal-box .withdraw-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#user-withdrawal-modal-box .withdraw-message {
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+#user-withdrawal-modal-box button {
+  width: 120px;
+  height: 48px;
+  flex-shrink: 0;
+  border: none;
+  font-size: 16px;
+}
+
+#user-withdrawal-modal-box button:first-child {
+  border-radius: 12px;
+  margin-right: 8px;
+}
+
+#user-withdrawal-modal-box button:last-child {
+  border-radius: 12px;
+}

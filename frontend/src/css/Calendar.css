@@ -1,0 +1,300 @@
+#calendar {
+  margin-bottom: 20px;
+  color: #b3b3b3;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+#calendar.small .react-calendar {
+  height: auto;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+#calendar.small .react-calendar__tile {
+  height: 35px;
+  transition: height 0.2s ease;
+}
+
+.calendarpage-content-title {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-top: 24px;
+  margin-bottom: 18px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.calendarpage-content {
+  display: flex;
+  justify-content: center;
+}
+
+#calendar .react-calendar {
+  border: none !important;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+#calendar .react-calendar__tile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0px;
+  height: 11vh;
+  transition: height 0.3s ease;
+}
+
+#calendar .react-calendar__tile abbr {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#calendar .react-calendar__tile--active {
+  background: none !important;
+  border: none !important;
+}
+
+#calendar .react-calendar__tile--hasActive {
+  background: none !important;
+  border: none !important;
+}
+
+#calendar .react-calendar__tile--active abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+#calendar .react-calendar__tile--hasActive abbr {
+  background: #d4145a !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 9px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+}
+
+.sunday {
+  color: #fbb03b !important;
+}
+
+.saturday {
+  color: #fbb03b !important;
+}
+
+#calendar .today {
+  background: none !important;
+  border: none !important;
+}
+
+#calendar .today abbr {
+  background-color: #fbb03b !important;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+#calendar .react-calendar__navigation {
+  height: 6vh;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+#calendar .react-calendar__navigation__label {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: last baseline;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.react-calendar__navigation__prev-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: last baseline;
+}
+
+.react-calendar__navigation__next-button {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: last baseline;
+}
+
+.react-calendar__navigation__prev2-button {
+  display: none;
+}
+
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+.event-tiles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-tile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #d4145a;
+  border-radius: 50%;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.event-dot.end-date {
+  background-color: #b3b3b3;
+  display: flex;
+  align-items: center;
+}
+
+.event-title {
+  font-size: 8px;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.back-to-calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-to-calendar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.selected-date-info {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.popup-info {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-info-item {
+  display: flex;
+  align-items: center;
+  margin: 0 25px;
+}
+
+.popup-info-image {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.popup-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-info-text-title {
+  width: 100%;
+  color: #222;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.popup-info-text-date {
+  color: #222;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.popup-info-text-none {
+  text-align: center;
+  color: #b3b3b3;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

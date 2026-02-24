@@ -1,0 +1,27 @@
+/* Category */
+#category {
+    margin: 0 20px;
+}
+
+.category-title {
+  display: flex;
+}
+
+.category-title img {
+  margin-right: 8px;
+}
+
+#category h1 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 32px 0;
+}
+
+.category-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 페이징 처리 */

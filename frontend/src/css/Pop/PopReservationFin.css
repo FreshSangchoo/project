@@ -1,0 +1,57 @@
+#pop-reservation-finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  height: 80vh; /* 전체 화면 높이를 사용 */
+  margin: 0 auto;
+}
+
+#pop-reservation-finish img {
+  margin-bottom: 20px;
+}
+
+#pop-reservation-finish .finish-ment {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 20px auto;
+}
+
+#pop-reservation-finish .check-ment {
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  margin-bottom: 20px;
+}
+
+#pop-reservation-finish .reservation-fin {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#pop-reservation-finish .reservation-fin button {
+  width: 320px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
+  box-shadow: 0px 4px 12px 0px rgba(153, 153, 153, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
