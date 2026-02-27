@@ -1,0 +1,64 @@
+---
+# KISA 보안 취약점 진단 (Autoisms/script.sh 실행 후 메인 서버로 수집)
+# 변수: script_path, results_dest_base, result_run_id (진단 실행마다 다른 폴더에 저장)
+- name: KISA Security Diagnostic via script.sh and collect to main
+  hosts: all
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  become_user: root
+  # NOPASSWD 전제: sudo -n 으로 비밀번호 없이 실행 (프롬프트 방지)
+  become_flags: '-n'
+
+  vars:
+    remote_diag_dir: /var/log/autoisms
+    results_dest_base: "{{ results_dest_base | default('/tmp/autoisms_results') }}"
+    result_run_id: "{{ result_run_id | default('latest') }}"
+
+  tasks:
+    - name: Create diagnostic output directory on target
+      ansible.builtin.file:
+        path: "{{ remote_diag_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Copy Autoisms script.sh to remote (from control node)
+      ansible.builtin.copy:
+        src: "{{ script_path }}"
+        dest: "{{ remote_diag_dir }}/script.sh"
+        mode: '0644'
+
+    - name: Run full KISA diagnostic script (result.json to {{ remote_diag_dir }})
+      ansible.builtin.shell: cd "{{ remote_diag_dir }}" && bash script.sh
+      register: script_result
+      changed_when: false
+      failed_when: false
+
+    - name: Check result.json was created on target
+      ansible.builtin.stat:
+        path: "{{ remote_diag_dir }}/result.json"
+      register: result_json_stat
+
+    - name: Fail if result.json missing on target
+      ansible.builtin.fail:
+        msg: "result.json이 대상 서버에 생성되지 않았습니다. script.sh 실행 로그를 확인하세요."
+      when: not result_json_stat.stat.exists
+
+    - name: Display script output
+      ansible.builtin.debug:
+        var: script_result.stdout_lines
+      when: script_result.stdout_lines is defined
+
+    - name: Ensure results directory exists on control node (run별 폴더)
+      ansible.builtin.file:
+        path: "{{ results_dest_base }}/{{ inventory_hostname }}/{{ result_run_id }}"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+      become: no
+
+    - name: Fetch result.json to main server (run별 저장, 덮어쓰지 않음)
+      ansible.builtin.fetch:
+        src: "{{ remote_diag_dir }}/result.json"
+        dest: "{{ results_dest_base }}/{{ inventory_hostname }}/{{ result_run_id }}/"
+        flat: true

@@ -1,30 +1,96 @@
-# React + TypeScript + Vite
+# AUTOISMS Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vanilla JavaScript 기반 웹 UI. 대시보드, 서버 관리, 진단·조치 실행, 보고서 다운로드를 제공합니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 목차
 
-## Expanding the ESLint configuration
+- [실행](#실행)
+- [백엔드 연결](#백엔드-연결)
+- [주요 기능](#주요-기능)
+- [화면 구성](#화면-구성)
+- [알림 시스템](#알림-시스템)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 실행
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+cd frontend
+python3 -m http.server 8080
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+또는:
+
+```bash
+./start_server.sh
+```
+
+접속: `http://localhost:8080` (또는 `http://<서버IP>:8080`)
+
+### Node.js 사용 시
+
+```bash
+npx http-server -p 8080
+```
+
+---
+
+## 백엔드 연결
+
+프론트엔드는 백엔드 API URL을 다음 순서로 결정합니다:
+
+### 1. 메타 태그 (권장)
+
+`index.html`의 `<head>`:
+
+```html
+<meta name="api-base-url" content="http://<서버IP>:8000">
+```
+
+실제 서버 IP로 수정하세요.
+
+### 2. URL 파라미터
+
+```
+http://<서버IP>:8080?api_base=http://<서버IP>:8000
+```
+
+### 3. 자동 감지
+
+- `http://<서버IP>:8080` 접속 시 → `http://<서버IP>:8000` 사용
+- `http://localhost:8080` 접속 시 → `http://localhost:8000` 사용
+
+---
+
+## 주요 기능
+
+| 기능 | 설명 |
+|------|------|
+| **서버 등록** | IP/포트/사용자/비밀번호로 서버 등록 |
+| **자동 서버 판별** | 등록 시 OS 타입 자동 감지 |
+| **Ansible Inventory** | 인벤토리 로드 후 서버 목록 표시 |
+| **실시간 진단** | SSH 기반 취약점 진단 실행 |
+| **일괄 조치** | 선택한 취약점 일괄 수정 |
+| **DIFF 비교** | 조치 전후 설정 비교 |
+| **회귀 감지** | 회귀 발생 시 알림 배너 표시 |
+| **보고서 생성** | PDF/Excel/Compliance 보고서 다운로드 |
+| **다크/라이트 테마** | 테마 전환 지원 |
+
+---
+
+## 화면 구성
+
+- **좌측 사이드바**: 워크플로우 가이드, 시스템 로그
+- **대시보드**: KPI 카드, 카테고리별/상태별 차트, 타겟 서버 테이블
+- **작업 버튼**: 전체/선택 진단, 전체 조치, 보고서 생성
+- **모달**: 서버 추가, 보고서 형식 선택
+
+---
+
+## 알림 시스템
+
+- 1분마다 백엔드 `/api/alerts`를 폴링합니다.
+- 회귀 감지 시 상단 배너로 표시됩니다.
+- 같은 로그 반복 발생 시 경고를 표시합니다.

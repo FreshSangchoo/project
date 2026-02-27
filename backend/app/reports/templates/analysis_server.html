@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url(fonts/NotoSansKR-VF.woff2) format('woff2');
+}
+
+@page {
+    size: A4 landscape;
+    margin: 20mm;
+    @bottom-right {
+        content: counter(page);
+        font-size: 10px;
+        color: #64748b;
+        font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 12px;
+    color: #2d3748;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ===== 헤더 영역 ===== */
+.report-header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1d4ed8;
+}
+
+.report-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* ===== 요약 통계 카드 ===== */
+.summary-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 12px 0;
+}
+
+.summary-table td {
+    width: 20%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.08);
+    vertical-align: middle;
+}
+
+.summary-table td.regression { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+.summary-table td.safe { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.summary-table td.vuln { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+.summary-table td.manual { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.summary-table td.total { background: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+
+.summary-table .count { font-size: 18px; display: block; margin-bottom: 2px; }
+.summary-table .label { font-size: 11px; font-weight: 500; opacity: 0.9; }
+
+/* ===== 기본 정보 표 (2열 그리드) ===== */
+.info-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 28px;
+    border-collapse: collapse;
+    border: 1px solid #94a3b8;
+    font-size: 12px;
+}
+
+.info-table th {
+    width: 160px;
+    background: #f1f5f9;
+    border: 1px solid #94a3b8;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: #475569;
+    text-align: left;
+}
+
+.info-table td {
+    border: 1px solid #94a3b8;
+    padding: 10px 14px;
+    background: #fff;
+    color: #1e293b;
+}
+
+/* ===== 섹션 제목 ===== */
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 32px 0 12px 0;
+    padding: 10px 14px;
+    border-left: 4px solid #2563eb;
+    background: #f8fafc;
+}
+
+.section-title:first-of-type { margin-top: 0; }
+
+.section-title.regression { border-left-color: #ea580c; background: #fff7ed; }
+.section-title.safe { border-left-color: #10b981; background: #f0fdf4; }
+.section-title.vuln { border-left-color: #ef4444; background: #fef2f2; }
+.section-title.manual { border-left-color: #f59e0b; background: #fffbeb; }
+
+/* ===== 진단 결과 테이블 ===== */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    border: 1px solid #94a3b8;
+    font-size: 12px;
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #94a3b8;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+.result-table th {
+    background: #cbd5e1;
+    font-weight: 600;
+    color: #334155;
+    font-size: 12px;
+}
+
+.result-table td {
+    background: #fff;
+}
+
+.result-table tbody tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+/* 위험도 배지 (좌측 보더 스타일) */
+.severity-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.severity-high {
+    background: #fef2f2;
+    color: #991b1b;
+    border-left: 3px solid #dc2626;
+    padding-left: 8px;
+}
+
+.severity-medium {
+    background: #fff7ed;
+    color: #9a3412;
+    border-left: 3px solid #ea580c;
+    padding-left: 8px;
+}
+
+.severity-low {
+    background: #fefce8;
+    color: #854d0e;
+    border-left: 3px solid #ca8a04;
+    padding-left: 8px;
+}
+
+/* 진단결과 배지 */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-badge.safe { background: #ecfdf5; color: #047857; }
+.status-badge.vuln { background: #fef2f2; color: #b91c1c; }
+.status-badge.manual { background: #fffbeb; color: #b45309; }
+.status-badge.regression { background: #fff7ed; color: #c2410c; }
+
+/* 빈 테이블 메시지 */
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-style: italic;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== 제목 ===== -->
+<div class="report-header">
+    <h1 class="report-title">AUTOISMS 서버 개별 진단 보고서</h1>
+</div>
+
+<!-- ===== 요약 통계 ===== -->
+<table class="summary-table">
+<tr>
+    <td class="regression"><span class="count">{{ summary.regression|default(0) }}건</span><span class="label">회귀</span></td>
+    <td class="vuln"><span class="count">{{ summary.vulnerable }}건</span><span class="label">취약</span></td>
+    <td class="manual"><span class="count">{{ summary.manual }}건</span><span class="label">수동조치</span></td>
+    <td class="safe"><span class="count">{{ summary.safe }}건</span><span class="label">양호</span></td>
+    <td class="total"><span class="count">{{ summary.total_items }}건</span><span class="label">총 점검 항목</span></td>
+</tr>
+</table>
+
+<!-- ===== 기본 정보 (날짜/시간 포함 표) ===== -->
+<table class="info-table">
+<tr>
+    <th>날짜·시간 (한국시간)</th>
+    <td>{{ meta.generated_at }}</td>
+</tr>
+<tr>
+    <th>OS 타입</th>
+    <td>{{ server_meta.get('os_type', '-') }}</td>
+</tr>
+<tr>
+    <th>OS 버전</th>
+    <td>{{ server_meta.get('os_version', '-') }}</td>
+</tr>
+<tr>
+    <th>서버 IP</th>
+    <td>{{ server_meta.get('ip', '-') }}</td>
+</tr>
+<tr>
+    <th>서버 호스트네임</th>
+    <td>{{ server_meta.get('hostname', meta.hostname) }}</td>
+</tr>
+</table>
+
+<!-- ===== 1. 회귀 ===== -->
+<h2 class="section-title regression">회귀 ({{ summary.regression|default(0) }}건)</h2>
+{% if regression_items %}
+<table class="result-table">
+<thead>
+<tr>
+    <th style="width:12%">카테고리</th>
+    <th style="width:10%">코드</th>
+    <th style="width:48%">내용</th>
+    <th style="width:15%">위험도</th>
+    <th style="width:15%">진단결과</th>
+</tr>
+</thead>
+<tbody>
+{% for item in regression_items %}
+<tr>
+    <td>{{ item.category }}</td>
+    <td>{{ item.check_id }}</td>
+    <td>{{ item.description }}</td>
+    <td><span class="severity-badge severity-{{ item.severity }}">{{ item.severity }}</span></td>
+    <td><span class="status-badge regression">회귀</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<div class="empty-message">회귀 항목이 없습니다.</div>
+{% endif %}
+
+<!-- ===== 2. 취약 ===== -->
+<h2 class="section-title vuln">취약 ({{ summary.vulnerable }}건)</h2>
+{% if vuln_items %}
+<table class="result-table">
+<thead>
+<tr>
+    <th style="width:12%">카테고리</th>
+    <th style="width:10%">코드</th>
+    <th style="width:48%">내용</th>
+    <th style="width:15%">위험도</th>
+    <th style="width:15%">진단결과</th>
+</tr>
+</thead>
+<tbody>
+{% for item in vuln_items %}
+<tr>
+    <td>{{ item.category }}</td>
+    <td>{{ item.check_id }}</td>
+    <td>{{ item.description }}</td>
+    <td><span class="severity-badge severity-{{ item.severity }}">{{ item.severity }}</span></td>
+    <td><span class="status-badge vuln">취약</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<div class="empty-message">취약 항목이 없습니다.</div>
+{% endif %}
+
+<!-- ===== 3. 수동조치 ===== -->
+<h2 class="section-title manual">수동조치 ({{ summary.manual }}건)</h2>
+{% if manual_items %}
+<table class="result-table">
+<thead>
+<tr>
+    <th style="width:12%">카테고리</th>
+    <th style="width:10%">코드</th>
+    <th style="width:48%">내용</th>
+    <th style="width:15%">위험도</th>
+    <th style="width:15%">진단결과</th>
+</tr>
+</thead>
+<tbody>
+{% for item in manual_items %}
+<tr>
+    <td>{{ item.category }}</td>
+    <td>{{ item.check_id }}</td>
+    <td>{{ item.description }}</td>
+    <td><span class="severity-badge severity-{{ item.severity }}">{{ item.severity }}</span></td>
+    <td><span class="status-badge manual">수동조치</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<div class="empty-message">수동조치 항목이 없습니다.</div>
+{% endif %}
+
+<!-- ===== 4. 양호 ===== -->
+<h2 class="section-title safe">양호 ({{ summary.safe }}건)</h2>
+{% if safe_items %}
+<table class="result-table">
+<thead>
+<tr>
+    <th style="width:12%">카테고리</th>
+    <th style="width:10%">코드</th>
+    <th style="width:48%">내용</th>
+    <th style="width:15%">위험도</th>
+    <th style="width:15%">진단결과</th>
+</tr>
+</thead>
+<tbody>
+{% for item in safe_items %}
+<tr>
+    <td>{{ item.category }}</td>
+    <td>{{ item.check_id }}</td>
+    <td>{{ item.description }}</td>
+    <td><span class="severity-badge severity-{{ item.severity }}">{{ item.severity }}</span></td>
+    <td><span class="status-badge safe">양호</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<div class="empty-message">양호 항목이 없습니다.</div>
+{% endif %}
+
+</body>
+</html>

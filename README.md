@@ -1,129 +1,160 @@
-# 📌 팝핀
-<div align='center'>
-  <img src='./docs/title.jpeg' alt='title' width='600px'>
-</div>
+# AUTOISMS - KISA 보안 취약점 자동 진단 시스템
 
-## ✨ 주제
-- 팝업스토어 정보를 조회하는 순간부터 방문하는 순간까지, 팝업스토어의 모든 것을 한 번에 볼 수 있는 커뮤니티 플랫폼
+보안 실무자를 위한 자동화된 취약점 진단 및 조치 시스템
 
-## 📅 기간
-- 2024.07.02 ~ 2024.08.16
+> **참고**: 이 프로젝트는 팀 프로젝트 기간 중 핫스팟 환경에서 개발 및 시연되었습니다.
+> 해당 네트워크 환경이 더 이상 유지되지 않으므로, 코드에 남아있는 IP 주소로는 현재 실제 접속이 불가능합니다.
 
-## 📜 프로젝트 컨셉 및 주요 기능
-### 1️⃣ 목적
-- 팝업스토어 관련 정보 수집 및 에약 과정에서 발생하는 불편함 해소
+## 프로젝트 구조
 
-### 2️⃣ 페르소나
-- 나에게 딱 맞는 팝업스토어 정보를 빠르게 얻고 싶은 사람
-- 팝업스토어 현장 상황을 실시간으로 알고 싶은 사람
-- 팝업스토어 정보 조회부터 예약까지 한 사이트에서 해결하고 싶은 사람
+```
+project/
+├── backend/                      # FastAPI 백엔드
+│   ├── app/                      # 애플리케이션 코드
+│   │   ├── reports/              # 보고서 생성 모듈
+│   │   │   ├── fonts/            # PDF 한글 폰트 (Noto Sans KR)
+│   │   │   ├── templates/        # HTML 보고서 템플릿
+│   │   │   ├── download_fonts.py # 폰트 다운로드 스크립트
+│   │   │   ├── report_generator.py
+│   │   │   └── report_router.py
+│   │   ├── main.py               # FastAPI 앱 진입점
+│   │   ├── diagnostic_engine.py  # 진단 엔진 (SSH 직접)
+│   │   ├── remediation_engine.py # 조치 엔진
+│   │   ├── ansible_diagnostic.py # Ansible 진단 연동
+│   │   ├── ansible_runner.py     # Ansible 실행기
+│   │   ├── server_manager.py     # 서버 관리
+│   │   ├── ssh_client.py         # SSH 클라이언트
+│   │   ├── inventory_parser.py   # Ansible Inventory 파서
+│   │   ├── vuln_catalog.py       # 취약점 카탈로그
+│   │   ├── storage.py            # 데이터 저장소
+│   │   ├── localdb.py            # 로컬 DB 관리
+│   │   └── schemas.py            # Pydantic 스키마
+│   ├── data/                     # 데이터 저장소 (자동 생성)
+│   ├── requirements.txt
+│   ├── start_server.sh
+│   ├── check_connection.sh
+│   └── install_deps.sh
+├── frontend/                     # 프론트엔드 (HTML/JS)
+│   ├── index.html
+│   ├── css/
+│   └── js/
+│       ├── config.js             # API URL 설정
+│       ├── init.js               # 초기화
+│       ├── state.js              # 상태 관리
+│       ├── dashboard.js          # 대시보드
+│       ├── operations.js         # 진단/조치 동작
+│       ├── modal.js              # 모달
+│       ├── reports.js            # 보고서
+│       ├── ui.js                 # UI 유틸
+│       └── theme.js              # 테마
+├── ansible/                      # Ansible 설정
+│   ├── ansible.cfg
+│   ├── inventory.yaml            # 타겟 서버 목록 (YAML)
+│   ├── inventory.ini             # 타겟 서버 목록 (INI)
+│   └── playbooks/
+│       └── diagnostic.yml
+├── script/                       # 진단/조치 Bash 스크립트
+│   ├── analysis_script/          # 진단 스크립트 (u01.sh ~ u67.sh)
+│   │   ├── all.sh                # 전체 진단 통합
+│   │   └── u01.sh ~ u67.sh
+│   └── remediation_script/       # 조치 스크립트 (u01.sh ~ u67.sh)
+│       ├── remediation_common.sh # 공통 함수
+│       └── u01.sh ~ u67.sh
+└── README.md
+```
 
-### 3️⃣ 주요 기능
-- 개인 맞춤형 팝업스토어 추천
-- 조회수, 좋아요, 별점, 예약 건수 등 다양한 조건 기반 팝업스토어 랭킹 산정
-- 채팅을 통한 팝업스토어 운영 매니저 및 관심있는 사람들과 실시간 소통
-- 팝업스토어 온라인 사전 예약 및 현장 예약
+## 서버 구성 (개발 당시 기준)
 
-### 4️⃣ 기대 효과
-**팝업스토어 이용자**
-- 자신의 취향에 맞는 팝업스토어를 찾는 과정이 간소화된다.
-- 여러 사이트를 이용할 필요 없이 한 사이트에서 정보 조회부터 예약까지 해결할 수 있다.
-- 팝업스토어의 실시간 운영 상황을 빠르게 공유할 수 있다.
+개발 및 시연 당시 구성이며, 현재는 해당 네트워크 환경이 존재하지 않습니다.
 
-**팝업스토어 운영 매니저**
-- 팝업스토어 운영 및 예약 관리가 용이하다.
-- 팝업스토어 홍보에서 발생하는 마케팅 비용을 절약할 수 있다.
-
-## 💻 개발 환경 및 문서
-### 1️⃣ 활용 기술
-<div align='center'>
-
-  #### 🛠 Front-End 🛠
-  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-
-  ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
-  ![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
-  ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
-  ![React](https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-
-  #### 🛠 Back-End 🛠
-  ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-  ![SpringBoot](https://img.shields.io/badge/SpringBoot-%236DB33F.svg?style=for-the-badge&logo=SpringBoot&logoColor=white)
-  ![SpringBoot](https://img.shields.io/badge/JPA-%236DB33F.svg?style=for-the-badge&logo=SpringBoot&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
-  ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-
-  ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
-  ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-000?style=for-the-badge&logo=apachekafka)
-  ![SpringSecurity](https://img.shields.io/badge/Spring%20Security-%236DB33F.svg?style=for-the-badge&logo=SpringSecurity&logoColor=white)
-  ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
-
-  #### 🛠 CI / CD 🛠
-  ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-  ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-  ![Jenkins](https://img.shields.io/badge/jenkins-%23D24939.svg?style=for-the-badge&logo=jenkins&logoColor=white)
-  ![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
-  ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-
-  #### 🛠 Tools 🛠
-  ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
-  ![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
-  ![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
-  [![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)](https://imminent-hamburger-1d8.notion.site/8-0-4-0fbd317ef9d840bc9d31ea8adfa50ceb)
-  [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/7WUqXjKvUcDPLKYMUa9P4Y/%EC%98%B7%EC%A7%B1?node-id=0-1&t=K68NqokoRcvm5jnd-0)
-  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-  ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
-
-</div>
-
-### 2️⃣ Architecture
-<div align='center'>
-  <img src='./docs/Architecture.png' width='600px'>
-</div>
-
-### 3️⃣ ERD
-<div align='center'>
-  <img src='./docs/ERD.png' width='600px'>
-</div>
-
-## 🎨 화면 구성
-### 1️⃣ User (팝업스토어 이용자)
-#### 메인 화면
-<img src='./docs/메인.gif' alt='메인' width='280px'>
-
-#### 팝업스토어 달력 & 지도
-<img src='./docs/지도_캘린더.gif' alt='지도_캘린더' width='280px'>
-
-#### 팝업스토어 상세
-<img src='./docs/팝업 상세.gif' alt='팝업 상세' width='280px'>
-
-#### 팝업스토어 사전 예약 등록
-<img src='./docs/사전 예약.gif' alt='사전 예약' width='280px'>
-
-#### 팝업스토어 현장 예약 대기
-<img src='./docs/현장 예약.gif' alt='현장 예약' width='280px'>
-
-#### 팝업스토어 후기 작성 및 조회
-<img src='./docs/후기.gif' alt='후기' width='280px'>
-
-### 2️⃣ Manager (팝업스토어 운영 매니저)
-#### 매니저 로그인
-<img src='./docs/관리자 로그인.gif' alt='매니저 로그인' width='280px'>
-
-#### 팝업스토어 등록
-<img src='./docs/팝업 등록.gif' alt='팝업 등록' width='280px'>
-
-#### 팝업스토어 현장 예약 등록
-<img src='./docs/현장 예약 유저.gif' alt='현장 예약 등록' width='280px'>
+| 역할 | OS | 설명 |
+|------|----|------|
+| main (AUTOISMS 실행) | Ubuntu 22.04 | 백엔드 + 프론트엔드 실행 서버 |
+| target1 | Ubuntu 24.04 | 진단 대상 서버 |
+| target2 | Rocky Linux 9.7 | 진단 대상 서버 |
+| target3 | Ubuntu 20.04 | 진단 대상 서버 |
+| target4 | Rocky Linux 10 | 진단 대상 서버 |
+| target5 | Ubuntu 25.04 | 진단 대상 서버 |
 
 
-## 👥 참여 인원 및 역할
-### 💗TEAM APINK💗
-|김윤|김남석|김찬규|민예림|박영남|최다환|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|<img src='https://soopool.art/image/acnh/animal/Chevre.png' alt='윤이' width='70px'>|<img src='https://soopool.art/image/acnh/animal/Zoe.png' alt='소면' width='70px'>|<img src='https://soopool.art/image/acnh/animal/Raymond.png' alt='잭슨' width='55px'>|<img src='https://soopool.art/image/acnh/animal/Lolly.png' alt='사이다' width='55px'>|<img src='https://soopool.art/image/acnh/animal/Bill.png' alt='코코아' width='60px'>|<img src='https://soopool.art/img/infoac/NPC/Tom_Nook/Tom_Nook_acaf.png' alt='너굴' width='70px'>|
-|**FE, Leader**|**BE**|**Infra**|**BE**|**FE**|**BE**|
+## 주요 기능
+
+### 서버 관리
+- **서버 등록**: IP/PORT/USER/패스워드 입력
+- **자동 판별**: 서버 타입 자동 감지 (Ubuntu/Rocky Linux)
+- **권한 체크**: root 권한 자동 검증
+
+### 진단
+- **실시간 진단**: SSH 또는 Ansible을 선택하여 실제 서버에 접속, 취약점 진단
+- **KISA 기준**: ISMS-P 기준 취약점 체크 (U-01 ~ U-67)
+- **OS 자동 감지**: Redhat 계열(Rocky Linux)과 Debian 계열(Ubuntu)을 자동 판별하여 계열별 진단 수행
+- **상태값 분류**: `safe` / `vulnerable` / `manual` / `fixed` / `regression` 으로 세분화하여 수동 조치가 필요한 항목은 `manual`로 별도 표시
+- **Inventory 자동 로드**: `ansible/inventory.yaml` 파일에서 서버 자동 등록
+
+### 조치
+- **일괄 조치**: 선택한 취약점 전체 자동 수정 (SSH 전용, 명령 정확성 보장)
+- **자동 백업**: 조치 전 설정 파일 자동 백업
+- **실시간 피드백**: 터미널에서 진행 상황 확인
+
+### 회귀 감지
+- **자동 감지**: 직전 진단 이력과 현재 결과를 비교하여 Safe/Fixed → Vulnerable/Manual로 변경된 항목을 회귀(Regression)로 판단
+- **알림 시스템**: 폴링 방식으로 회귀 발생 시 대시보드 상단 배너 알림
+- **DIFF 비교**: 조치 전후 코드 변경 내역을 비교하여 어떤 설정이 어떻게 바뀌었는지 직관적으로 확인
+
+### 보고서
+- **PDF 보고서**: 진단/조치 결과를 그래프 포함 PDF로 생성 (WeasyPrint + Noto Sans KR)
+- **CSV 보고서**: 취약 항목의 현재 설정값 포함 CSV 생성
+- **JSON 보고서**: 진단/조치 결과 JSON 형식 출력
+
+## 시나리오
+
+### 정상 동작 시나리오
+
+1. **서버 등록 또는 Inventory 로드**
+   - 직접 IP/PORT/USER/패스워드 입력하여 등록
+   - 또는 `ansible/inventory.yaml` 파일에서 자동 로드
+
+2. **진단 실행**
+   - 서버 선택 후 "분석 시작" 클릭
+   - SSH로 실제 서버에 접속하여 진단 (또는 Ansible 사용)
+   - 취약점 리스트 표시
+
+3. **일괄 조치**
+   - 취약점 선택 후 "일괄 조치" 클릭
+   - 자동 백업 생성
+   - 실제 서버에 보안 설정 적용
+   - 조치 후 재진단
+
+4. **DIFF 확인**
+   - 조치 전후 분석 선택
+   - 설정 변경사항 비교 표시
+
+5. **회귀 감지**
+   - 조치 후 재진단 시 회귀 자동 감지
+   - 알림 배너 표시
+   - 조치 버튼 활성화
+
+6. **보고서 생성**
+   - PDF/CSV/JSON 보고서 다운로드
+
+## 기술 스택
+
+### 백엔드
+- **FastAPI**: Python 웹 프레임워크
+- **Uvicorn**: ASGI 서버
+- **Paramiko**: SSH 클라이언트
+- **Cryptography**: 패스워드 암호화
+- **Ansible / ansible-core**: 자동화 진단
+- **WeasyPrint**: PDF 보고서 생성
+- **openpyxl**: CSV/Excel 보고서 생성
+- **Jinja2**: HTML 템플릿 렌더링
+- **PyYAML**: YAML 파싱 (Inventory)
+
+### 프론트엔드
+- **Vanilla JavaScript**: 순수 JavaScript
+- **Chart.js**: 차트/그래프
+- **Fetch API**: 백엔드 통신
+
+### 진단/조치 스크립트
+- **Bash**: 진단 스크립트 (u01.sh ~ u67.sh)
+- **JSON 출력**: 결과를 JSON 형식으로 표준 출력

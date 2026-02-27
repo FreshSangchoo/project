@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AUTOISMS 전체 진단 결과 보고서</title>
+<style>
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url(fonts/NotoSansKR-VF.woff2) format('woff2');
+}
+
+@page {
+    size: A4 landscape;
+    margin: 15mm 15mm 20mm 15mm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 9pt;
+        color: #656d76;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #24292f;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.report-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 제목 */
+.report-title {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 14px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #0969da;
+}
+
+/* 상단 정보 섹션 */
+.top-section {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.info-box {
+    flex: 1;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 14px;
+    padding-bottom: 12px;
+}
+
+.info-box h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #424a53;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 10pt;
+}
+
+.info-item .label {
+    font-weight: 600;
+    color: #424a53;
+}
+
+.info-item .value {
+    color: #1a1a1a;
+}
+
+/* 요약 테이블 */
+.summary-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 9pt;
+    margin-top: 6px;
+}
+
+.summary-table th,
+.summary-table td {
+    width: 25%;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.summary-table th {
+    background: #424a53;
+    color: #fff;
+    font-weight: 600;
+    font-size: 8pt;
+}
+
+.summary-table td {
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+.summary-table .safe-cell { background: #dafbe1; color: #1a7f37; }
+.summary-table .vulnerable-cell { background: #ffebe9; color: #cf222e; }
+.summary-table .manual-cell { background: #fff8c5; color: #9a6700; }
+.summary-table .total-cell { background: #e8f4fd; color: #0550ae; }
+
+/* 차트 섹션 */
+.charts-section {
+    margin-bottom: 12px;
+}
+
+.charts-section h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #d0d7de;
+}
+
+.charts-container {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+}
+
+.chart-box {
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding-left : 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 9px;
+}
+
+.chart-box h4 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #424a53;
+    margin: 0 0 6px 0;
+    text-align: center;
+}
+
+/* 원형 차트 (SVG) */
+.pie-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.pie-chart svg {
+    width: 200px;
+    height: 200px;
+}
+
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 8pt;
+    width: 90%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 18px;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.legend-label {
+    flex: 1;
+    font-weight: 600;
+}
+
+.legend-value {
+    font-weight: 600;
+    color: #424a53;
+}
+
+/* 통계 테이블 */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 8px;
+}
+
+.stats-table th {
+    background: #424a53;
+    color: #fff;
+    padding: 6px;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: 600;
+}
+
+.stats-table td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid #eaeef2;
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.stats-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 서버 리스트 섹션 */
+.server-list-section {
+    margin-bottom: 20px;
+}
+
+.server-list-section h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #d0d7de;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 9pt;
+}
+
+.data-table thead th {
+    background: #424a53;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px;
+    text-align: center;
+    font-size: 9pt;
+}
+
+.data-table tbody td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #eaeef2;
+    text-align: center;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background: #f6f8fa;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 서버별 상세 섹션 */
+.server-details-section {
+    margin-bottom: 20px;
+}
+
+.server-details-section h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #d0d7de;
+}
+
+.server-detail-item {
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.server-detail-header {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #0550ae;
+    margin-bottom: 8px;
+}
+
+.server-detail-table {
+    width: 100%;
+    max-width: 600px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 9pt;
+}
+
+.server-detail-table th,
+.server-detail-table td {
+    width: 25%;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.server-detail-table th {
+    background: #424a53;
+    color: #fff;
+    font-weight: 600;
+    font-size: 8pt;
+}
+
+.server-detail-table td {
+    font-weight: 600;
+}
+
+@media print {
+    body { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="report-container">
+
+<!-- 제목 -->
+<h1 class="report-title">AUTOISMS 전체 진단 결과 보고서</h1>
+
+<!-- 상단 정보 섹션 -->
+<div class="top-section">
+    <!-- 왼쪽: 점검 정보 -->
+    <div class="info-box">
+        <h3>점검 정보</h3>
+        <div class="info-item">
+            <span class="label">점검 시간:</span>
+            <span class="value">{{ meta.generated_at }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">점검 서버 대수:</span>
+            <span class="value">{{ meta.target_count }}대</span>
+        </div>
+    </div>
+
+    <!-- 오른쪽: 점검 결과 요약 -->
+    <div class="info-box">
+        <h3>점검 결과 요약</h3>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>전체 진단 항목</th>
+                    <th>양호</th>
+                    <th>취약</th>
+                    <th>기타(수동조치필요)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="total-cell">{{ summary.total_items|default(0) }}</td>
+                    <td class="safe-cell">{{ summary.safe|default(0) }}</td>
+                    <td class="vulnerable-cell">{{ summary.vulnerable|default(0) }}</td>
+                    <td class="manual-cell">{{ summary.manual|default(0) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 차트 섹션 -->
+<div class="charts-section">
+    <h3>진단 결과 분석</h3>
+    <div class="charts-container">
+        <!-- 1. 위험도별 분포 -->
+        <div class="chart-box">
+            <h4 style="margin-bottom: 12px;">위험도별 분포</h4>
+            <div class="pie-chart">
+                {% if severity_pie is defined and severity_pie|length > 0 %}
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                    {% for slice in severity_pie %}
+                    <path d="{{ slice.path_d }}" fill="{{ slice.color }}" stroke="{{ slice.color }}" stroke-width="0.15"/>
+                    {% endfor %}
+                </svg>
+                <div class="chart-legend" style="gap: 6px; margin-top: 8px;">
+                    {% for slice in severity_pie %}
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: {{ slice.color }};"></div>
+                        <span class="legend-label">{{ slice.label }}</span>
+                        <span class="legend-value">{{ slice.value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p style="text-align: center; color: #656d76; margin: 20px 0; font-size: 9pt;">데이터 없음</p>
+                <div class="chart-legend" style="gap: 6px; margin-top: 8px;">
+                    <div class="legend-item"><div class="legend-color" style="background: #cf222e;"></div><span class="legend-label">High</span><span class="legend-value">{{ severity_count.high|default(0) }}</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background: #fb8500;"></div><span class="legend-label">Medium</span><span class="legend-value">{{ severity_count.medium|default(0) }}</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background: #1a7f37;"></div><span class="legend-label">Low</span><span class="legend-value">{{ severity_count.low|default(0) }}</span></div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 2. 결과 요약 -->
+        <div class="chart-box">
+            <h4 style="margin-bottom: 12px;">결과 요약</h4>
+            <div class="pie-chart">
+                {% if result_pie is defined and result_pie|length > 0 %}
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                    {% for slice in result_pie %}
+                    <path d="{{ slice.path_d }}" fill="{{ slice.color }}" stroke="{{ slice.color }}" stroke-width="0.15"/>
+                    {% endfor %}
+                </svg>
+                <div class="chart-legend" style="margin-top: 8px;">
+                    {% for slice in result_pie %}
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: {{ slice.color }};"></div>
+                        <span class="legend-label">{{ slice.label }}</span>
+                        <span class="legend-value">{{ slice.value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p style="text-align: center; color: #656d76; margin: 20px 0; font-size: 9pt;">데이터 없음</p>
+                <div class="chart-legend" style="margin-top: 8px;">
+                    <div class="legend-item"><div class="legend-color" style="background: #1a7f37;"></div><span class="legend-label">양호</span><span class="legend-value">{{ summary.safe|default(0) }}</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background: #cf222e;"></div><span class="legend-label">취약</span><span class="legend-value">{{ summary.vulnerable|default(0) }}</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background: #9a6700;"></div><span class="legend-label">기타</span><span class="legend-value">{{ summary.manual|default(0) }}</span></div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 3. 카테고리별 취약 항목 (원형 차트 + 표) -->
+        <div class="chart-box">
+            <h4 style="margin-bottom: 12px;">카테고리별 취약 항목</h4>
+            {% if category_pie is defined and category_pie|length > 0 %}
+            <div class="pie-chart">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                    {% for slice in category_pie %}
+                    <path d="{{ slice.path_d }}" fill="{{ slice.color }}" stroke="{{ slice.color }}" stroke-width="0.15"/>
+                    {% endfor %}
+                </svg>
+
+                <div class="chart-legend" style="margin-top: 8px; padding-left: 8px; padding-right: 10px;">
+                    {% for slice in category_pie %}
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: {{ slice.color }};"></div>
+                        <span class="legend-label">{{ slice.label }}</span>
+                        <span class="legend-value">{{ slice.value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- 간단 표
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>카테고리</th>
+                            <th>취약 수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(category_labels|length) %}
+                        {% if category_data[i] > 0 %}
+                        <tr>
+                            <td style="text-align: left; padding-left: 10px; font-size: 8pt;">{{ category_labels[i] }}</td>
+                            <td style="color: #2563eb;">{{ category_data[i] }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table> -->
+            </div>
+            {% else %}
+            <p style="text-align: center; color: #656d76; margin: 20px 0; font-size: 9pt;">데이터 없음</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- 타겟 서버 리스트 -->
+<div class="server-list-section">
+    <h3>타겟 서버 리스트</h3>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>OS</th>
+                <th>OS 버전</th>
+                <th>IP</th>
+                <th>Hostname</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for s in server_list %}
+            <tr>
+                <td>{{ s.os|default('-') }}</td>
+                <td>{{ s.osver|default('-') }}</td>
+                <td>{{ s.ip }}</td>
+                <td>{{ s.hostname }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- 서버별 상세 요약 -->
+<div class="server-details-section">
+    <h3>서버별 상세 요약</h3>
+    {% for server in server_details|default([]) %}
+    <div class="server-detail-item">
+        <div class="server-detail-header">
+            {{ server.ip }} ({{ server.hostname }})
+        </div>
+        <table class="server-detail-table">
+            <thead>
+                <tr>
+                    <th>전체 점검 항목</th>
+                    <th>양호</th>
+                    <th>취약</th>
+                    <th>기타</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="total-cell">{{ server.total_items|default(0) }}</td>
+                    <td class="safe-cell">{{ server.safe|default(0) }}</td>
+                    <td class="vulnerable-cell">{{ server.vulnerable|default(0) }}</td>
+                    <td class="manual-cell">{{ server.manual|default(0) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+
+</body>
+</html>

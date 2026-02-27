@@ -1,0 +1,2403 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOISMS - Security Automation Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --border: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .snapshot-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--success);
+            color: white;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Sidebar Toggle */
+        .sidebar-toggle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--text-primary);
+            color: white;
+            border: none;
+            padding: 12px 6px;
+            writing-mode: vertical-rl;
+            cursor: pointer;
+            z-index: 150;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+
+        .sidebar-toggle:hover {
+            padding-left: 10px;
+            background: var(--primary);
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            position: fixed;
+            left: -360px;
+            top: 0;
+            width: 360px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            z-index: 140;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 64px;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-primary);
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide-section {
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .guide-header:hover {
+            background: #e2e8f0;
+        }
+
+        .guide-header h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .guide-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .guide-section.collapsed .guide-toggle-btn {
+            transform: rotate(-90deg);
+        }
+
+        .guide-content {
+            padding: 20px 24px;
+            max-height: 400px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .guide-section.collapsed .guide-content {
+            display: none;
+        }
+
+        .guide-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .guide-content::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .guide-content::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .guide-content::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .terminal-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .horizontal-resizer {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            cursor: row-resize;
+            transition: background 0.2s;
+        }
+
+        .horizontal-resizer:hover {
+            background: var(--primary);
+        }
+
+        .horizontal-resizer.dragging {
+            background: var(--primary);
+        }
+
+        .terminal-header {
+            padding: 12px 24px;
+            background: #1e293b;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .log-badge {
+            background: var(--danger);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .terminal-logs {
+            flex: 1;
+            background: #0f172a;
+            padding: 16px;
+            overflow-y: auto;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .log-entry {
+            margin-bottom: 4px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .log-time {
+            color: #64748b;
+            flex-shrink: 0;
+        }
+
+        .log-entry.info { color: #3b82f6; }
+        .log-entry.success { color: #10b981; }
+        .log-entry.warning { color: #f59e0b; }
+        .log-entry.error { color: #ef4444; }
+
+        /* Resizer */
+        .resizer {
+            position: fixed;
+            left: 360px;
+            top: 64px;
+            width: 4px;
+            height: calc(100vh - 64px);
+            cursor: col-resize;
+            z-index: 130;
+            transition: left 0.3s ease;
+            opacity: 0;
+        }
+
+        .resizer:hover,
+        .resizer.active {
+            opacity: 1;
+            background: var(--primary);
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            transition: margin-left 0.3s ease;
+            min-height: calc(100vh - 64px);
+        }
+
+        .main-wrapper.shifted {
+            margin-left: 360px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e2e8f0;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #dc2626;
+        }
+
+        /* Setup Page */
+        .setup-container {
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .setup-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+        }
+
+        .setup-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .setup-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stats Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .radar-chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .header-with-chart {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 1200px) {
+            .header-with-chart {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Control Panel */
+        .control-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 80px;
+            z-index: 50;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .control-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Table */
+        .table-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--bg-primary);
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            background: #e2e8f0;
+        }
+
+        th.sortable::after {
+            content: '⇅';
+            margin-left: 8px;
+            opacity: 0.3;
+        }
+
+        th.sorted-asc::after {
+            content: '↑';
+            opacity: 1;
+        }
+
+        th.sorted-desc::after {
+            content: '↓';
+            opacity: 1;
+        }
+
+        td {
+            padding: 16px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-primary);
+        }
+
+        tr.hidden {
+            display: none;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge.danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge.warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .code-badge {
+            font-family: 'SF Mono', Monaco, monospace;
+            background: var(--bg-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Action Buttons in Table */
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 4px;
+        }
+
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .action-btn.success {
+            background: var(--success);
+            color: white;
+        }
+
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-secondary);
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+        }
+
+        /* Progress Modal */
+        .progress-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .progress-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .progress-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .progress-desc {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-percent {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                display: none;
+            }
+            
+            .page > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            #chartContainer,
+            #chartPlaceholder {
+                margin-top: 16px;
+                height: 350px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn-group .btn {
+                width: 100%;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Utility Classes */
+        .mt-4 { margin-top: 16px; }
+        .mb-4 { margin-bottom: 16px; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .font-bold { font-weight: 700; }
+        .text-sm { font-size: 13px; }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+        GUIDE
+    </button>
+
+    <!-- Left Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">워크플로우 가이드</div>
+            <div class="sidebar-subtitle">KISA 보안 점검 절차</div>
+        </div>
+        <div class="sidebar-content">
+            <div class="guide-section" id="guideSection">
+                <div class="guide-header" onclick="toggleGuide()">
+                    <h3>워크플로우 가이드</h3>
+                    <button class="guide-toggle-btn">▼</button>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Inventory 탐색</h4>
+                            <p>Ansible 인벤토리에서 타겟 서버를 자동으로 불러옵니다</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>연결 확인</h4>
+                            <p>타겟 서버들의 SSH 연결 상태를 확인합니다</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>보안 진단</h4>
+                            <p>KISA 가이드 기반으로 취약점을 스캔합니다</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>취약점 조치</h4>
+                            <p>발견된 취약점을 자동으로 조치합니다</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>회귀 감지</h4>
+                            <p>외부 패치로 인한 보안 회귀를 자동 감지합니다</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>보고서 생성</h4>
+                            <p>진단 및 조치 결과를 PDF/Excel로 생성합니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="horizontal-resizer" id="horizontalResizer"></div>
+            
+            <div class="terminal-section" id="terminalSection">
+                <div class="terminal-header">
+                    <span>시스템 로그</span>
+                    <span class="log-badge" id="logCount">0</span>
+                </div>
+                <div class="terminal-logs" id="terminalLogs">
+                    <div class="log-entry info">
+                        <span class="log-time">[00:00:00]</span>
+                        <span>System initialized</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resizer -->
+    <div class="resizer" id="resizer"></div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🔒</div>
+                    <span>AUTOISMS</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#servers">Servers</a></li>
+                    <li><a href="#reports">Reports</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="snapshot-badge" id="snapshotBadge">
+                    <span>📸</span>
+                    <span>Snapshot #0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-wrapper" id="mainWrapper">
+        <div class="container">
+            
+            <!-- Initial Setup Page -->
+            <div class="page active" id="initialPage">
+                <div class="card">
+                    <div class="setup-container">
+                        <div class="setup-icon">🗂️</div>
+                        <h1 class="setup-title">Ansible Inventory 불러오기</h1>
+                        <p class="setup-desc">
+                            메인 서버의 Ansible 설정 파일을 분석하여 관리 대상 서버 목록을 자동으로 가져옵니다
+                        </p>
+                        <button class="btn btn-primary" onclick="loadInventory()">
+                            <span>📡</span>
+                            <span>Inventory 확인</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Target Server List Page -->
+            <div class="page" id="targetListPage">
+                <!-- Top Section: Stats + Radar Chart -->
+                <div style="display: grid; grid-template-columns: 1fr 420px; gap: 24px; margin-bottom: 24px;">
+                    
+                    <!-- Left: Stats Dashboard -->
+                    <div class="stats-grid" id="statsDashboard">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalServers" style="color: var(--primary)">0</div>
+                            <div class="stat-label">전체 서버</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="connectedServers" style="color: var(--success)">0</div>
+                            <div class="stat-label">연결됨</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalVulns" style="color: var(--danger)">0</div>
+                            <div class="stat-label">총 취약점</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="regressionServers" style="color: var(--warning)">0</div>
+                            <div class="stat-label">회귀 발생</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Radar Chart -->
+                    <div>
+                        <!-- Radar Chart Container -->
+                        <div class="chart-container" id="chartContainer" style="display: none; height: 100%; padding: 20px;">
+                            <div class="chart-title" style="text-align: center; margin-bottom: 16px;">카테고리별 취약점 분포</div>
+                            <div style="height: calc(100% - 50px); display: flex; align-items: center; justify-content: center;">
+                                <canvas id="vulnChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Chart Placeholder -->
+                        <div class="card" id="chartPlaceholder" style="text-align: center; padding: 40px 20px; height: 100%;">
+                            <div style="font-size: 48px; margin-bottom: 12px; opacity: 0.2;">📊</div>
+                            <div style="color: var(--text-secondary); font-size: 13px; line-height: 1.8;">
+                                진단 완료 후<br>
+                                카테고리별 취약점<br>
+                                분포가 표시됩니다
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Server Management Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title">타겟 서버 관리</h2>
+                            <p class="card-subtitle">Ansible Inventory에서 불러온 서버 목록</p>
+                        </div>
+                    </div>
+
+                    <!-- Control Panel -->
+                    <div class="control-panel" style="position: static; top: auto;">
+                        <div class="control-row">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="searchInput" placeholder="IP 주소 또는 호스트명 검색..." onkeyup="searchTargets()">
+                                <span class="search-icon">🔍</span>
+                            </div>
+                        </div>
+                        <div class="control-row">
+                            <div class="btn-group">
+                                <button class="btn btn-secondary" id="diagnoseSelectedBtn" onclick="diagnoseSelected()" disabled>
+                                    <span>🔍</span>
+                                    <span>선택 진단</span>
+                                </button>
+                                <button class="btn btn-primary" id="diagnoseAllBtn" onclick="diagnoseAll()">
+                                    <span>🔍</span>
+                                    <span>전체 진단</span>
+                                </button>
+                                <button class="btn btn-success" id="fixAllTargetsBtn" onclick="fixAllTargets()" style="display: none;">
+                                    <span>🔧</span>
+                                    <span>전체 조치</span>
+                                </button>
+                                <button class="btn btn-warning" id="rediagnoseBtn" onclick="rediagnoseServers()" style="display: none; background: var(--warning); color: white;">
+                                    <span>🔄</span>
+                                    <span>재진단</span>
+                                </button>
+                            </div>
+                            <div class="btn-group" style="margin-left: 12px;">
+                                <button class="btn btn-primary" id="diagnosisReportBtn" onclick="generateGlobalDiagnosisReport()" style="display: none;">
+                                    <span>📄</span>
+                                    <span>전체 진단 보고서</span>
+                                </button>
+                                <button class="btn btn-success" id="remediationReportBtn" onclick="generateGlobalRemediationReport()" style="display: none;">
+                                    <span>📋</span>
+                                    <span>전체 조치 보고서</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
+                                    <th class="sortable" onclick="sortTable('ip')">서버 IP</th>
+                                    <th class="sortable" onclick="sortTable('hostname')">호스트명</th>
+                                    <th class="sortable" onclick="sortTable('connected')">연결</th>
+                                    <th class="sortable" onclick="sortTable('vulnCount')">취약점</th>
+                                    <th class="sortable" onclick="sortTable('regression')">회귀</th>
+                                    <th>작업</th>
+                                </tr>
+                            </thead>
+                            <tbody id="targetTableBody">
+                                <!-- Dynamic content -->
+                            </tbody>
+                        </table>
+
+                        <div id="noResults" class="empty-state" style="display: none;">
+                            <div class="empty-icon">🔍</div>
+                            <div class="empty-text">검색 결과가 없습니다</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content" style="max-width: 1200px;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTargetTitle">서버 상세</h2>
+                <button class="close-btn" onclick="closeDetailModal()">&times;</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sortable" onclick="sortModalTable('code')">코드</th>
+                            <th class="sortable" onclick="sortModalTable('name')">취약점명</th>
+                            <th class="sortable" onclick="sortModalTable('category')">카테고리</th>
+                            <th class="sortable" onclick="sortModalTable('severity')">위험도</th>
+                            <th class="sortable" onclick="sortModalTable('status')">상태</th>
+                            <th>로그</th>
+                            <th>조치</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalVulnTableBody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
+                <button class="btn btn-secondary" onclick="closeDetailModal()">닫기</button>
+                <button class="btn" style="background: #3b82f6; color: white;" onclick="generateServerDiagnosisReport(currentTargetIP)">
+                    <span>📄</span>
+                    <span>진단 보고서</span>
+                </button>
+                <button class="btn btn-success" onclick="generateServerRemediationReport(currentTargetIP)">
+                    <span>📋</span>
+                    <span>조치 보고서</span>
+                </button>
+                <button class="btn btn-primary" onclick="fixAllVulnerabilitiesInModal()">
+                    <span>🔧</span>
+                    <span>전체 조치</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Modal -->
+    <div class="modal" id="progressModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="progress-content">
+                <div class="progress-icon" id="progressIcon">⏳</div>
+                <h2 class="progress-title" id="progressTitle">진행 중...</h2>
+                <p class="progress-desc" id="progressDesc">잠시만 기다려주세요</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="progress-percent">
+                    <span id="progressPercent">0</span>%
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let logCount = 0;
+        let currentSnapshot = 0;
+        let currentTargetIP = null;
+        let currentSortColumn = null;
+        let currentSortDirection = 'asc';
+        let currentModalSortColumn = null;
+        let currentModalSortDirection = 'asc';
+        let chartInstance = null;
+        let targetServers = [];
+
+        const vulnerabilityTemplate = [
+            { code: 'U-01', name: 'root 계정 원격 접속 제한', severity: 'high', status: 'not-scanned', category: '계정관리', current_value: '', expected_value: 'SSH PermitRootLogin no 설정', details: [] },
+            { code: 'U-02', name: '패스워드 복잡도 설정', severity: 'high', status: 'not-scanned', category: '계정관리', current_value: '', expected_value: '최소 8자 이상, 영문/숫자/특수문자 조합', details: [] },
+            { code: 'U-44', name: 'root 이외 UID가 0 금지', severity: 'medium', status: 'not-scanned', category: '계정관리', current_value: '', expected_value: 'root 계정만 UID 0 보유', details: [] },
+            { code: 'U-45', name: 'root 계정 su 제한', severity: 'medium', status: 'not-scanned', category: '계정관리', current_value: '', expected_value: 'wheel 그룹만 su 사용 가능', details: [] },
+            { code: 'U-08', name: '/etc/shadow 파일 권한 설정', severity: 'high', status: 'not-scanned', category: '파일 및 디렉터리', current_value: '', expected_value: '권한 000 또는 400', details: [] },
+            { code: 'U-09', name: '/etc/passwd 파일 권한 설정', severity: 'medium', status: 'not-scanned', category: '파일 및 디렉터리', current_value: '', expected_value: '권한 644 이하', details: [] },
+            { code: 'U-23', name: '불필요한 서비스 제거', severity: 'medium', status: 'not-scanned', category: '서비스 관리', current_value: '', expected_value: '필수 서비스만 실행', details: [] },
+            { code: 'U-24', name: 'NFS 서비스 비활성화', severity: 'medium', status: 'not-scanned', category: '서비스 관리', current_value: '', expected_value: 'NFS 미사용 시 비활성화', details: [] },
+            { code: 'U-42', name: '최신 보안 패치 적용', severity: 'high', status: 'not-scanned', category: '패치 관리', current_value: '', expected_value: '최신 보안 패치 적용됨', details: [] },
+            { code: 'U-43', name: '로그 기록 및 정기 검토', severity: 'medium', status: 'not-scanned', category: '로그 관리', current_value: '', expected_value: '로그 정기적으로 검토', details: [] },
+        ];
+
+        // 로그 데이터 생성 함수
+        function generateVulnDetails(code, hostname) {
+            const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+            const details = [];
+            
+            switch(code) {
+                case 'U-01':
+                    details.push(`[${timestamp}] SSH 설정 파일 확인 시작: /etc/ssh/sshd_config`);
+                    details.push(`[${timestamp}] PermitRootLogin 설정 값: yes (취약)`);
+                    details.push(`[${timestamp}] Telnet 서비스 확인: 활성화 상태`);
+                    details.push(`[${timestamp}] 취약점 발견: root 원격 로그인 허용됨`);
+                    break;
+                case 'U-02':
+                    details.push(`[${timestamp}] 패스워드 정책 파일 확인: /etc/security/pwquality.conf`);
+                    details.push(`[${timestamp}] minlen = 6 (기준: 8 이상)`);
+                    details.push(`[${timestamp}] dcredit, ucredit, ocredit 미설정`);
+                    details.push(`[${timestamp}] 취약점 발견: 패스워드 복잡도 정책 미흡`);
+                    break;
+                case 'U-44':
+                    details.push(`[${timestamp}] /etc/passwd 파일 분석 시작`);
+                    details.push(`[${timestamp}] UID 0인 계정 확인: root, admin`);
+                    details.push(`[${timestamp}] 취약점 발견: root 외 'admin' 계정이 UID 0 사용 중`);
+                    break;
+                case 'U-45':
+                    details.push(`[${timestamp}] /etc/pam.d/su 파일 확인`);
+                    details.push(`[${timestamp}] pam_wheel.so 설정 없음`);
+                    details.push(`[${timestamp}] 취약점 발견: 모든 사용자가 su 명령 사용 가능`);
+                    break;
+                case 'U-08':
+                    details.push(`[${timestamp}] /etc/shadow 파일 권한 확인`);
+                    details.push(`[${timestamp}] 현재 권한: 644 (rw-r--r--)`);
+                    details.push(`[${timestamp}] 취약점 발견: shadow 파일이 일반 사용자도 읽기 가능`);
+                    break;
+                case 'U-09':
+                    details.push(`[${timestamp}] /etc/passwd 파일 권한 확인`);
+                    details.push(`[${timestamp}] 현재 권한: 666 (rw-rw-rw-)`);
+                    details.push(`[${timestamp}] 취약점 발견: passwd 파일이 모든 사용자가 쓰기 가능`);
+                    break;
+                case 'U-23':
+                    details.push(`[${timestamp}] 실행 중인 서비스 확인: systemctl list-units --type=service`);
+                    details.push(`[${timestamp}] 불필요한 서비스 발견: telnet, rlogin, rexec`);
+                    details.push(`[${timestamp}] 취약점 발견: 보안 위험이 높은 서비스 실행 중`);
+                    break;
+                case 'U-24':
+                    details.push(`[${timestamp}] NFS 서비스 상태 확인`);
+                    details.push(`[${timestamp}] nfs-server.service: active (running)`);
+                    details.push(`[${timestamp}] /etc/exports 설정 확인: 공유 설정 존재`);
+                    details.push(`[${timestamp}] 취약점 발견: 사용하지 않는 NFS 서비스 실행 중`);
+                    break;
+                case 'U-42':
+                    details.push(`[${timestamp}] 시스템 패키지 업데이트 확인`);
+                    details.push(`[${timestamp}] yum check-update 실행`);
+                    details.push(`[${timestamp}] 보안 업데이트 가능 패키지: 15개 발견`);
+                    details.push(`[${timestamp}] 취약점 발견: 중요 보안 패치 미적용`);
+                    break;
+                case 'U-43':
+                    details.push(`[${timestamp}] 로그 설정 파일 확인: /etc/rsyslog.conf`);
+                    details.push(`[${timestamp}] 로그 파일 보관 기간 확인: 설정 없음`);
+                    details.push(`[${timestamp}] 로그 정기 검토 스크립트: 없음`);
+                    details.push(`[${timestamp}] 취약점 발견: 로그 관리 정책 미흡`);
+                    break;
+                default:
+                    details.push(`[${timestamp}] 점검 시작: ${code}`);
+                    details.push(`[${timestamp}] 취약점 발견`);
+            }
+            
+            return details;
+        }
+
+        function generateCurrentValue(code) {
+            switch(code) {
+                case 'U-01': return 'SSH PermitRootLogin yes, Telnet 활성화';
+                case 'U-02': return 'minlen=6, 복잡도 정책 미설정';
+                case 'U-44': return 'root, admin 계정이 UID 0 사용';
+                case 'U-45': return 'pam_wheel.so 미설정';
+                case 'U-08': return '권한 644 (rw-r--r--)';
+                case 'U-09': return '권한 666 (rw-rw-rw-)';
+                case 'U-23': return 'telnet, rlogin, rexec 실행 중';
+                case 'U-24': return 'NFS 서비스 실행 중';
+                case 'U-42': return '15개 보안 업데이트 대기 중';
+                case 'U-43': return '로그 관리 정책 미설정';
+                default: return '취약';
+            }
+        }
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainWrapper = document.getElementById('mainWrapper');
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const resizer = document.getElementById('resizer');
+            
+            const isActive = sidebar.classList.contains('active');
+            const sidebarWidth = sidebar.offsetWidth;
+            
+            sidebar.classList.toggle('active');
+            mainWrapper.classList.toggle('shifted');
+            resizer.classList.toggle('active');
+            
+            if (!isActive) {
+                toggleBtn.style.left = sidebarWidth + 'px';
+                mainWrapper.style.marginLeft = sidebarWidth + 'px';
+                resizer.style.left = sidebarWidth + 'px';
+            } else {
+                toggleBtn.style.left = '0px';
+                mainWrapper.style.marginLeft = '0px';
+            }
+        }
+
+        // Guide Toggle
+        function toggleGuide() {
+            const guideSection = document.getElementById('guideSection');
+            guideSection.classList.toggle('collapsed');
+        }
+
+        // Horizontal Resizer
+        let isHorizontalResizing = false;
+        let startY = 0;
+        let startGuideHeight = 0;
+
+        document.getElementById('horizontalResizer').addEventListener('mousedown', (e) => {
+            isHorizontalResizing = true;
+            startY = e.clientY;
+            const guideContent = document.querySelector('.guide-content');
+            startGuideHeight = guideContent.offsetHeight;
+            document.getElementById('horizontalResizer').classList.add('dragging');
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isHorizontalResizing) return;
+            
+            const diff = e.clientY - startY;
+            const newHeight = Math.max(100, Math.min(600, startGuideHeight + diff));
+            
+            const guideContent = document.querySelector('.guide-content');
+            guideContent.style.maxHeight = newHeight + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isHorizontalResizing) {
+                isHorizontalResizing = false;
+                document.getElementById('horizontalResizer').classList.remove('dragging');
+            }
+        });
+
+        // Terminal Logs
+        function addLog(message, type = 'info') {
+            logCount++;
+            document.getElementById('logCount').textContent = logCount;
+            
+            const logsContainer = document.getElementById('terminalLogs');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            
+            logEntry.innerHTML = `
+                <span class="log-time">[${time}]</span>
+                <span>${message}</span>
+            `;
+            
+            logsContainer.appendChild(logEntry);
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+        }
+
+        // Update Stats
+        function updateStats() {
+            const total = targetServers.length;
+            const connected = targetServers.filter(s => s.connected).length;
+            const totalVulns = targetServers.reduce((sum, s) => sum + s.vulnCount, 0);
+            const regression = targetServers.filter(s => s.hasRegression).length;
+
+            document.getElementById('totalServers').textContent = total;
+            document.getElementById('connectedServers').textContent = connected;
+            document.getElementById('totalVulns').textContent = totalVulns;
+            document.getElementById('regressionServers').textContent = regression;
+
+            if (targetServers.some(s => s.diagnosed)) {
+                updateChart();
+            }
+        }
+
+        // Update Chart (Radar Chart for KISA Categories)
+        function updateChart() {
+            const container = document.getElementById('chartContainer');
+            const placeholder = document.getElementById('chartPlaceholder');
+            
+            container.style.display = 'block';
+            placeholder.style.display = 'none';
+
+            // 카테고리별 취약점 집계
+            const categoryCount = {};
+            
+            targetServers.forEach(server => {
+                if (server.diagnosed) {
+                    server.vulnerabilities.forEach(vuln => {
+                        if (vuln.status === 'vulnerable') {
+                            if (!categoryCount[vuln.category]) {
+                                categoryCount[vuln.category] = 0;
+                            }
+                            categoryCount[vuln.category]++;
+                        }
+                    });
+                }
+            });
+
+            const categories = Object.keys(categoryCount);
+            const counts = Object.values(categoryCount);
+
+            const ctx = document.getElementById('vulnChart').getContext('2d');
+            
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: '취약점 개수',
+                        data: counts,
+                        backgroundColor: 'rgba(37, 99, 235, 0.15)',
+                        borderColor: '#2563eb',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#2563eb',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        pointHoverBackgroundColor: '#1e40af',
+                        pointHoverBorderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                display: false, // 중앙 눈금 숫자 숨김
+                                backdropColor: 'transparent'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    weight: '600'
+                                },
+                                color: '#1e293b',
+                                padding: 15,
+                                callback: function(label, index) {
+                                    // 카테고리명(개수) 형식으로 표시
+                                    return label + '(' + counts[index] + ')';
+                                }
+                            },
+                            grid: {
+                                color: '#e2e8f0',
+                                lineWidth: 1
+                            },
+                            angleLines: {
+                                color: '#e2e8f0',
+                                lineWidth: 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed.r + '개';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Search Targets
+        function searchTargets() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#targetTableBody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const ip = row.cells[1]?.textContent.toLowerCase() || '';
+                const hostname = row.cells[2]?.textContent.toLowerCase() || '';
+                
+                if (ip.includes(searchTerm) || hostname.includes(searchTerm)) {
+                    row.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Sort Table
+        function sortTable(column) {
+            if (currentSortColumn === column) {
+                currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortColumn = column;
+                currentSortDirection = 'asc';
+            }
+
+            document.querySelectorAll('.table-wrapper th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            const headerMap = {
+                'ip': 1, 'hostname': 2, 'connected': 3, 'vulnCount': 4, 'regression': 5
+            };
+            
+            const th = document.querySelectorAll('.table-wrapper th')[headerMap[column]];
+            th.classList.add(currentSortDirection === 'asc' ? 'sorted-asc' : 'sorted-desc');
+
+            targetServers.sort((a, b) => {
+                let aVal, bVal;
+
+                switch(column) {
+                    case 'ip':
+                        aVal = a.ip.split('.').map(n => parseInt(n).toString().padStart(3, '0')).join('');
+                        bVal = b.ip.split('.').map(n => parseInt(n).toString().padStart(3, '0')).join('');
+                        break;
+                    case 'hostname':
+                        aVal = a.hostname.toLowerCase();
+                        bVal = b.hostname.toLowerCase();
+                        break;
+                    case 'connected':
+                        aVal = a.connected ? 1 : 0;
+                        bVal = b.connected ? 1 : 0;
+                        break;
+                    case 'vulnCount':
+                        aVal = a.vulnCount;
+                        bVal = b.vulnCount;
+                        break;
+                    case 'regression':
+                        aVal = a.hasRegression ? 1 : 0;
+                        bVal = b.hasRegression ? 1 : 0;
+                        break;
+                    default:
+                        return 0;
+                }
+
+                if (aVal < bVal) return currentSortDirection === 'asc' ? -1 : 1;
+                if (aVal > bVal) return currentSortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            renderTargetTable();
+            addLog(`${column} 컬럼 ${currentSortDirection === 'asc' ? '오름차순' : '내림차순'} 정렬`, 'info');
+        }
+
+        // Load Inventory
+        function loadInventory() {
+            addLog('Ansible Inventory 탐색 시작', 'info');
+            showProgress('🗂️', 'Inventory 확인 중', 'Ansible 설정 파일을 분석하고 있습니다');
+            
+            setTimeout(() => {
+                targetServers = [
+                    { ip: '192.168.1.10', hostname: 'web-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.1.20', hostname: 'db-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.1.30', hostname: 'api-server-01', connected: false, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.1.40', hostname: 'app-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.1.50', hostname: 'cache-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.2.10', hostname: 'web-server-02', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.2.20', hostname: 'db-server-02', connected: false, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.2.30', hostname: 'api-server-02', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.2.40', hostname: 'app-server-02', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.3.10', hostname: 'file-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.3.20', hostname: 'monitoring-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.3.30', hostname: 'backup-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.4.10', hostname: 'load-balancer-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.4.20', hostname: 'proxy-server-01', connected: false, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                    { ip: '192.168.4.30', hostname: 'mail-server-01', connected: true, vulnerabilities: JSON.parse(JSON.stringify(vulnerabilityTemplate)), vulnCount: 0, diagnosed: false, hasRegression: false },
+                ];
+                
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                document.getElementById('initialPage').classList.remove('active');
+                document.getElementById('targetListPage').classList.add('active');
+                
+                addLog(`${targetServers.length}개 타겟 서버 발견`, 'success');
+            }, 2000);
+        }
+
+        // Render Target Table
+        function renderTargetTable() {
+            const tbody = document.getElementById('targetTableBody');
+            tbody.innerHTML = '';
+            
+            targetServers.forEach((server, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="checkbox" class="target-checkbox" data-index="${index}" onchange="updateSelectButtons()"></td>
+                    <td><span class="code-badge">${server.ip}</span></td>
+                    <td>${server.hostname}</td>
+                    <td>
+                        ${server.connected ? 
+                            '<span class="badge success">연결됨</span>' : 
+                            '<span class="badge danger">끊김</span>'
+                        }
+                    </td>
+                    <td>${server.diagnosed ? server.vulnCount : '-'}</td>
+                    <td>${server.hasRegression ? '<span class="badge warning">회귀</span>' : '-'}</td>
+                    <td>
+                        <button class="action-btn primary" onclick="showDetail('${server.ip}')" ${!server.diagnosed ? 'disabled' : ''}>상세</button>
+                        <button class="action-btn" style="background: #3b82f6; color: white;" onclick="generateServerDiagnosisReport('${server.ip}')" ${!server.diagnosed ? 'disabled' : ''}>진단 보고서</button>
+                        <button class="action-btn" style="background: #22c55e; color: white;" onclick="generateServerRemediationReport('${server.ip}')" ${!server.diagnosed ? 'disabled' : ''}>조치 보고서</button>
+                        <button class="action-btn success" onclick="fixServer('${server.ip}')" ${!server.diagnosed || !server.connected || !server.server_id || !server.analysis_id || !server.vulnCount ? 'disabled' : ''}>${server.hostname || server.ip} 조치</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Toggle Select All
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.target-checkbox');
+            
+            checkboxes.forEach(cb => {
+                const index = parseInt(cb.dataset.index);
+                if (targetServers[index].connected) {
+                    cb.checked = selectAll.checked;
+                }
+            });
+            
+            updateSelectButtons();
+        }
+
+        // Update Select Buttons
+        function updateSelectButtons() {
+            const checkboxes = document.querySelectorAll('.target-checkbox:checked');
+            document.getElementById('diagnoseSelectedBtn').disabled = checkboxes.length === 0;
+        }
+
+        // Diagnose Selected
+        function diagnoseSelected() {
+            const checkboxes = document.querySelectorAll('.target-checkbox:checked');
+            const selectedIndices = Array.from(checkboxes).map(cb => parseInt(cb.dataset.index));
+            
+            if (selectedIndices.length === 0) return;
+            
+            addLog(`${selectedIndices.length}개 서버 진단 시작`, 'info');
+            showProgress('🔍', '취약점 스캔 중', '선택된 서버를 분석하고 있습니다');
+            
+            setTimeout(() => {
+                selectedIndices.forEach(index => {
+                    const server = targetServers[index];
+                    server.vulnerabilities.forEach(v => {
+                        v.status = 'vulnerable';
+                        v.current_value = generateCurrentValue(v.code);
+                        v.details = generateVulnDetails(v.code, server.hostname);
+                    });
+                    server.vulnCount = server.vulnerabilities.length;
+                    server.diagnosed = true;
+                    addLog(`${server.ip}: ${server.vulnCount}개 취약점 발견`, 'warning');
+                });
+                
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                currentSnapshot = 1;
+                updateSnapshotBadge();
+                
+                document.getElementById('fixAllTargetsBtn').style.display = 'inline-flex';
+                document.getElementById('diagnosisReportBtn').style.display = 'inline-flex';
+                
+                addLog('진단 완료', 'success');
+            }, 3000);
+        }
+
+        // Diagnose All
+        function diagnoseAll() {
+            const connectedServers = targetServers.filter(s => s.connected);
+            addLog(`${connectedServers.length}개 서버 전체 진단 시작`, 'info');
+            showProgress('🔍', '전체 스캔 중', '모든 서버를 분석하고 있습니다');
+            
+            setTimeout(() => {
+                connectedServers.forEach(server => {
+                    server.vulnerabilities.forEach(v => {
+                        v.status = 'vulnerable';
+                        v.current_value = generateCurrentValue(v.code);
+                        v.details = generateVulnDetails(v.code, server.hostname);
+                    });
+                    server.vulnCount = server.vulnerabilities.length;
+                    server.diagnosed = true;
+                    addLog(`${server.ip}: ${server.vulnCount}개 취약점 발견`, 'warning');
+                });
+                
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                currentSnapshot = 1;
+                updateSnapshotBadge();
+                
+                document.getElementById('fixAllTargetsBtn').style.display = 'inline-flex';
+                document.getElementById('diagnosisReportBtn').style.display = 'inline-flex';
+                
+                addLog('전체 진단 완료', 'success');
+            }, 3000);
+        }
+
+        // 개별 서버 조치 (테이블 행의 "XXX 조치" 버튼)
+        function fixServer(ip) {
+            const server = targetServers.find(s => s.ip === ip);
+            if (!server || !server.diagnosed) return;
+            const vulnCount = (server.vulnerabilities || []).filter(v => (v.status || '').toLowerCase() === 'vulnerable').length;
+            if (vulnCount === 0) { alert('조치할 취약점이 없습니다.'); return; }
+            if (!confirm(`"${server.hostname}" (${server.ip}) 서버의 취약점 ${vulnCount}개를 모두 조치하시겠습니까?`)) return;
+            addLog(`${server.ip}: 전체 조치 시작`, 'info');
+            showProgress('🔧', '일괄 조치 중', server.hostname + ' 서버 취약점 조치 중');
+            setTimeout(() => {
+                (server.vulnerabilities || []).forEach(v => {
+                    if ((v.status || '').toLowerCase() === 'vulnerable') {
+                        v.status = 'fixed';
+                        v.current_value = v.expected_value;
+                    }
+                });
+                server.vulnCount = 0;
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                addLog(`${server.ip}: 전체 조치 완료`, 'success');
+            }, 3000);
+        }
+
+        // Fix All Targets
+        function fixAllTargets() {
+            const diagnosedServers = targetServers.filter(s => s.diagnosed && s.vulnCount > 0);
+            
+            if (diagnosedServers.length === 0) {
+                alert('조치할 취약점이 없습니다.');
+                return;
+            }
+            
+            if (!confirm(`${diagnosedServers.length}개 서버의 모든 취약점을 조치하시겠습니까?`)) {
+                return;
+            }
+            
+            addLog('전체 서버 일괄 조치 시작', 'info');
+            showProgress('🔧', '일괄 조치 중', '모든 취약점을 해결하고 있습니다');
+            
+            setTimeout(() => {
+                const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                diagnosedServers.forEach(server => {
+                    server.vulnerabilities.forEach(v => {
+                        if (v.status === 'vulnerable') {
+                            v.status = 'fixed';
+                            // 조치 후 로그 업데이트
+                            v.current_value = v.expected_value;
+                            v.details.push(`[${timestamp}] 조치 완료: 설정 변경 적용됨`);
+                            v.details.push(`[${timestamp}] 최종 상태: ${v.expected_value}`);
+                        }
+                    });
+                    server.vulnCount = 0;
+                    addLog(`${server.ip}: 전체 조치 완료`, 'success');
+                });
+                
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                currentSnapshot = 2;
+                updateSnapshotBadge();
+                
+                // 전체 조치 완료 후 재진단 버튼과 조치 보고서 버튼 표시
+                document.getElementById('rediagnoseBtn').style.display = 'inline-flex';
+                document.getElementById('remediationReportBtn').style.display = 'inline-flex';
+                
+                addLog('전체 조치 완료', 'success');
+                addLog('외부에서 패치 작업 후 "재진단" 버튼으로 회귀 여부를 확인하세요', 'info');
+            }, 5000);
+        }
+
+        // Rediagnose Servers (회귀 확인)
+        function rediagnoseServers() {
+            if (!confirm('서버 상태를 재진단하여 회귀 여부를 확인하시겠습니까?')) {
+                return;
+            }
+            
+            addLog('재진단 시작 - 외부 패치 이후 변경사항 확인 중', 'info');
+            showProgress('🔬', '회귀 분석 중', '이전 스냅샷과 현재 상태를 비교하고 있습니다');
+            
+            setTimeout(() => {
+                // 실제로는 서버에 다시 접속하여 현재 상태를 확인
+                // 시뮬레이션: 일부 서버에서 외부 패치로 인한 회귀 발생
+                const connectedServers = targetServers.filter(s => s.connected && s.diagnosed);
+                
+                // 랜덤하게 30% 정도의 서버에서 회귀 발생
+                const regressionCount = Math.floor(connectedServers.length * 0.3);
+                const regressionIndices = [];
+                
+                while (regressionIndices.length < regressionCount) {
+                    const randomIndex = Math.floor(Math.random() * connectedServers.length);
+                    if (!regressionIndices.includes(randomIndex)) {
+                        regressionIndices.push(randomIndex);
+                    }
+                }
+                
+                let totalRegressions = 0;
+                
+                regressionIndices.forEach(idx => {
+                    const server = connectedServers[idx];
+                    const regressionVulnCount = Math.floor(Math.random() * 2) + 1; // 1-2개 취약점
+                    
+                    // 일부 취약점을 다시 취약 상태로 변경
+                    for (let i = 0; i < regressionVulnCount && i < server.vulnerabilities.length; i++) {
+                        if (server.vulnerabilities[i].status === 'fixed') {
+                            server.vulnerabilities[i].status = 'vulnerable';
+                            // 회귀 발생 시 로그 데이터 재생성
+                            server.vulnerabilities[i].current_value = generateCurrentValue(server.vulnerabilities[i].code);
+                            server.vulnerabilities[i].details = generateVulnDetails(server.vulnerabilities[i].code, server.hostname);
+                            totalRegressions++;
+                        }
+                    }
+                    
+                    server.vulnCount = server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                    server.hasRegression = server.vulnCount > 0;
+                    
+                    if (server.hasRegression) {
+                        addLog(`${server.ip}: ${server.vulnCount}개 회귀 발견 - 외부 패치로 인한 설정 변경 감지`, 'error');
+                    }
+                });
+                
+                // 회귀가 없는 서버도 로그에 표시
+                connectedServers.forEach(server => {
+                    if (!server.hasRegression) {
+                        addLog(`${server.ip}: 정상 - 회귀 없음`, 'success');
+                    }
+                });
+                
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                currentSnapshot = 3;
+                updateSnapshotBadge();
+                
+                if (totalRegressions > 0) {
+                    addLog('='.repeat(50), 'warning');
+                    addLog(`재진단 완료: ${regressionIndices.length}개 서버에서 총 ${totalRegressions}개 회귀 발견`, 'error');
+                    addLog('외부 패치로 인해 보안 설정이 변경되었습니다', 'error');
+                    addLog('회귀가 발생한 서버들을 다시 조치하세요', 'warning');
+                    addLog('='.repeat(50), 'warning');
+                    
+                    alert(`⚠️ 회귀 감지!\n\n${regressionIndices.length}개 서버에서 총 ${totalRegressions}개의 회귀가 발견되었습니다.\n외부 패치로 인해 이전에 조치한 보안 설정이 다시 취약 상태로 변경되었습니다.\n\n상세 내용은 로그를 확인하세요.`);
+                } else {
+                    addLog('='.repeat(50), 'success');
+                    addLog('재진단 완료: 모든 서버 정상 - 회귀 없음', 'success');
+                    addLog('='.repeat(50), 'success');
+                    
+                    alert('✅ 모든 서버 정상\n\n회귀가 발견되지 않았습니다.\n보안 설정이 정상적으로 유지되고 있습니다.');
+                }
+            }, 3000);
+        }
+
+        // Show Detail Modal
+        function showDetail(ip) {
+            const server = targetServers.find(s => s.ip === ip);
+            if (!server) return;
+            
+            currentTargetIP = ip;
+            currentModalSortColumn = 'code'; // 기본 코드순 정렬
+            currentModalSortDirection = 'asc';
+            
+            document.getElementById('modalTargetTitle').textContent = `${server.hostname} (${server.ip})`;
+            
+            renderModalTable();
+            
+            document.getElementById('detailModal').classList.add('active');
+        }
+
+        // Render Modal Table
+        function renderModalTable() {
+            const server = targetServers.find(s => s.ip === currentTargetIP);
+            if (!server) return;
+            
+            const tbody = document.getElementById('modalVulnTableBody');
+            tbody.innerHTML = '';
+            
+            // 취약점 배열 복사 후 정렬
+            const sortedVulnerabilities = [...server.vulnerabilities].sort((a, b) => {
+                let aVal, bVal;
+                
+                switch(currentModalSortColumn) {
+                    case 'code':
+                        // U-01, U-02 형식을 숫자로 변환하여 정렬
+                        aVal = parseInt(a.code.replace('U-', ''));
+                        bVal = parseInt(b.code.replace('U-', ''));
+                        break;
+                    case 'name':
+                        aVal = a.name.toLowerCase();
+                        bVal = b.name.toLowerCase();
+                        break;
+                    case 'category':
+                        aVal = a.category.toLowerCase();
+                        bVal = b.category.toLowerCase();
+                        break;
+                    case 'severity':
+                        const severityOrder = { 'high': 2, 'medium': 1, 'low': 0 };
+                        aVal = severityOrder[a.severity] || 0;
+                        bVal = severityOrder[b.severity] || 0;
+                        break;
+                    case 'status':
+                        const statusOrder = { 'vulnerable': 2, 'not-scanned': 1, 'fixed': 0 };
+                        aVal = statusOrder[a.status] || 0;
+                        bVal = statusOrder[b.status] || 0;
+                        break;
+                    default:
+                        return 0;
+                }
+                
+                if (aVal < bVal) return currentModalSortDirection === 'asc' ? -1 : 1;
+                if (aVal > bVal) return currentModalSortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+            
+            sortedVulnerabilities.forEach((vuln, index) => {
+                // 취약점 행
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><span class="code-badge">${vuln.code}</span></td>
+                    <td>${vuln.name}</td>
+                    <td><span class="badge" style="background: #dbeafe; color: #1e40af;">${vuln.category}</span></td>
+                    <td><span class="badge ${vuln.severity === 'high' ? 'danger' : 'warning'}">${vuln.severity === 'high' ? '높음' : '중간'}</span></td>
+                    <td><span class="badge ${vuln.status === 'vulnerable' ? 'danger' : 'success'}">${vuln.status === 'vulnerable' ? '취약' : '정상'}</span></td>
+                    <td>
+                        <button class="action-btn" style="background: #6366f1; color: white; padding: 4px 10px; font-size: 12px;" onclick="toggleVulnDetail(${index})">
+                            상세 로그
+                        </button>
+                    </td>
+                    <td>
+                        <button class="action-btn primary" ${vuln.status === 'fixed' ? 'disabled' : ''} onclick="fixVulnerabilityInModal('${vuln.code}')">
+                            ${vuln.status === 'fixed' ? '조치완료' : '조치하기'}
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+                
+                // 로그 상세 행 (숨김 상태로 시작)
+                const detailRow = document.createElement('tr');
+                detailRow.id = `vuln-detail-${index}`;
+                detailRow.style.display = 'none';
+                detailRow.innerHTML = `
+                    <td colspan="7" style="padding: 0; background: var(--bg-primary);">
+                        <div style="padding: 20px; border-top: 2px solid var(--primary);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                                <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                                    <span style="background: var(--primary); color: white; padding: 4px 12px; border-radius: 6px; font-size: 14px;">${vuln.code}</span>
+                                    <span>${vuln.name}</span>
+                                </h3>
+                                <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 13px;" onclick="toggleVulnDetail(${index})">닫기</button>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                                <div style="background: white; padding: 12px; border-radius: 8px; border-left: 3px solid var(--danger);">
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600;">현재 상태</div>
+                                    <div style="font-size: 14px; font-weight: 600; color: var(--danger);">${vuln.current_value || '알 수 없음'}</div>
+                                </div>
+                                <div style="background: white; padding: 12px; border-radius: 8px; border-left: 3px solid var(--success);">
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600;">권장 설정</div>
+                                    <div style="font-size: 14px; font-weight: 600; color: var(--success);">${vuln.expected_value || '권장 설정 없음'}</div>
+                                </div>
+                            </div>
+
+                            <div style="background: #0f172a; border-radius: 8px; padding: 16px; max-height: 300px; overflow-y: auto;">
+                                <div style="color: #94a3b8; font-family: 'SF Mono', Monaco, 'Courier New', monospace; font-size: 13px; line-height: 1.7;">
+                                    ${generateLogHTML(vuln.details)}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(detailRow);
+            });
+        }
+
+        // Sort Modal Table
+        function sortModalTable(column) {
+            if (currentModalSortColumn === column) {
+                currentModalSortDirection = currentModalSortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentModalSortColumn = column;
+                currentModalSortDirection = 'asc';
+            }
+            
+            renderModalTable();
+            addLog(`상세 테이블: ${column} 컬럼 ${currentModalSortDirection === 'asc' ? '오름차순' : '내림차순'} 정렬`, 'info');
+        }
+
+        // 로그 HTML 생성
+        function generateLogHTML(details) {
+            if (!details || details.length === 0) {
+                return '<div style="color: #64748b;">로그 데이터가 없습니다.</div>';
+            }
+            
+            return details.map(log => {
+                let color = '#94a3b8';
+                if (log.includes('취약점 발견') || log.includes('취약')) {
+                    color = '#fca5a5';
+                } else if (log.includes('확인') || log.includes('시작')) {
+                    color = '#93c5fd';
+                }
+                return `<div style="margin-bottom: 6px; color: ${color};">${log}</div>`;
+            }).join('');
+        }
+
+        // 상세 로그 토글
+        function toggleVulnDetail(index) {
+            const detailRow = document.getElementById(`vuln-detail-${index}`);
+            if (detailRow.style.display === 'none') {
+                // 다른 모든 로그 닫기
+                document.querySelectorAll('[id^="vuln-detail-"]').forEach(row => {
+                    row.style.display = 'none';
+                });
+                // 현재 로그 열기
+                detailRow.style.display = 'table-row';
+            } else {
+                // 현재 로그 닫기
+                detailRow.style.display = 'none';
+            }
+        }
+
+        // Show Vulnerability Detail Logs (구버전 - 삭제)
+        function showVulnDetail(code) {
+            // 더 이상 사용하지 않음
+        }
+
+        // Close Vulnerability Detail (구버전 - 삭제)
+        function closeVulnDetail() {
+            // 더 이상 사용하지 않음
+        }
+
+        // Close Detail Modal
+        function closeDetailModal() {
+            // 열려있는 로그 패널 모두 닫기
+            document.querySelectorAll('[id^="vuln-detail-"]').forEach(row => {
+                row.style.display = 'none';
+            });
+            document.getElementById('detailModal').classList.remove('active');
+            currentTargetIP = null;
+        }
+
+        // Fix Vulnerability in Modal
+        function fixVulnerabilityInModal(code) {
+            const server = targetServers.find(s => s.ip === currentTargetIP);
+            if (!server) return;
+            
+            addLog(`${server.ip}: ${code} 조치 시작`, 'info');
+            showProgress('🔧', '조치 진행 중', '취약점을 해결하고 있습니다');
+            
+            setTimeout(() => {
+                const vuln = server.vulnerabilities.find(v => v.code === code);
+                if (vuln) {
+                    vuln.status = 'fixed';
+                    // 조치 후 로그 업데이트
+                    vuln.current_value = vuln.expected_value;
+                    const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                    vuln.details.push(`[${timestamp}] 조치 완료: 설정 변경 적용됨`);
+                    vuln.details.push(`[${timestamp}] 최종 상태: ${vuln.expected_value}`);
+                }
+                
+                server.vulnCount = server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                
+                renderModalTable();
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                addLog(`${server.ip}: ${code} 조치 완료`, 'success');
+            }, 2000);
+        }
+
+        // Fix All Vulnerabilities in Modal
+        function fixAllVulnerabilitiesInModal() {
+            const server = targetServers.find(s => s.ip === currentTargetIP);
+            if (!server) return;
+            
+            const vulnCount = server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+            
+            if (vulnCount === 0) {
+                alert('조치할 취약점이 없습니다.');
+                return;
+            }
+            
+            addLog(`${server.ip}: 전체 조치 시작`, 'info');
+            showProgress('🔧', '일괄 조치 중', '모든 취약점을 해결하고 있습니다');
+            
+            setTimeout(() => {
+                const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                server.vulnerabilities.forEach(v => {
+                    if (v.status === 'vulnerable') {
+                        v.status = 'fixed';
+                        // 조치 후 로그 업데이트
+                        v.current_value = v.expected_value;
+                        v.details.push(`[${timestamp}] 조치 완료: 설정 변경 적용됨`);
+                        v.details.push(`[${timestamp}] 최종 상태: ${v.expected_value}`);
+                    }
+                });
+                
+                server.vulnCount = 0;
+                server.hasRegression = false;
+                
+                renderModalTable();
+                renderTargetTable();
+                updateStats();
+                closeProgress();
+                
+                addLog(`${server.ip}: 전체 조치 완료`, 'success');
+            }, 3000);
+        }
+
+        // Generate Server Diagnosis Report (개별 진단 보고서)
+        function generateServerDiagnosisReport(ip) {
+            const server = targetServers.find(s => s.ip === ip);
+            if (!server || !server.diagnosed) {
+                alert('진단을 먼저 실행해주세요.');
+                return;
+            }
+
+            addLog(`${server.ip} 진단 보고서 생성 중`, 'info');
+            showProgress('📄', '진단 보고서 생성 중', '서버 취약점 진단 결과를 정리하고 있습니다');
+
+            setTimeout(() => {
+                const vulnerableCount = server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                const fixedCount = server.vulnerabilities.filter(v => v.status === 'fixed').length;
+                
+                closeProgress();
+                addLog(`${server.ip} 진단 보고서 생성 완료`, 'success');
+                alert(`📄 ${server.hostname} 진단 보고서 생성 완료\n\n발견된 취약점: ${vulnerableCount}개\n조치된 취약점: ${fixedCount}개\n총 진단 항목: ${server.vulnerabilities.length}개`);
+            }, 2000);
+        }
+
+        // Generate Server Remediation Report (개별 조치 보고서)
+        function generateServerRemediationReport(ip) {
+            const server = targetServers.find(s => s.ip === ip);
+            if (!server || !server.diagnosed) {
+                alert('진단을 먼저 실행해주세요.');
+                return;
+            }
+
+            const fixedCount = server.vulnerabilities.filter(v => v.status === 'fixed').length;
+            if (fixedCount === 0) {
+                alert('조치된 취약점이 없습니다. 조치를 먼저 수행해주세요.');
+                return;
+            }
+
+            addLog(`${server.ip} 조치 보고서 생성 중`, 'info');
+            showProgress('📋', '조치 보고서 생성 중', '취약점 조치 내역을 정리하고 있습니다');
+
+            setTimeout(() => {
+                const vulnerableCount = server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                
+                closeProgress();
+                addLog(`${server.ip} 조치 보고서 생성 완료`, 'success');
+                alert(`📋 ${server.hostname} 조치 보고서 생성 완료\n\n조치 완료: ${fixedCount}개\n미조치: ${vulnerableCount}개\n조치율: ${Math.round(fixedCount / server.vulnerabilities.length * 100)}%`);
+            }, 2000);
+        }
+
+        // Generate Global Diagnosis Report (전체 진단 보고서)
+        function generateGlobalDiagnosisReport() {
+            const diagnosedServers = targetServers.filter(s => s.diagnosed);
+            
+            if (diagnosedServers.length === 0) {
+                alert('진단된 서버가 없습니다.');
+                return;
+            }
+
+            addLog('전체 진단 보고서 생성 중', 'info');
+            showProgress('📄', '전체 진단 보고서 생성 중', '모든 서버의 진단 결과를 종합하고 있습니다');
+
+            setTimeout(() => {
+                let totalVulnerable = 0;
+                let totalFixed = 0;
+                
+                diagnosedServers.forEach(server => {
+                    totalVulnerable += server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                    totalFixed += server.vulnerabilities.filter(v => v.status === 'fixed').length;
+                });
+                
+                const totalVulns = totalVulnerable + totalFixed;
+                
+                closeProgress();
+                addLog('전체 진단 보고서 생성 완료', 'success');
+                alert(`📄 전체 진단 보고서 생성 완료\n\n대상 서버: ${diagnosedServers.length}개\n발견된 취약점: ${totalVulnerable}개\n조치된 취약점: ${totalFixed}개\n총 취약점: ${totalVulns}개`);
+            }, 2000);
+        }
+
+        // Generate Global Remediation Report (전체 조치 보고서)
+        function generateGlobalRemediationReport() {
+            const diagnosedServers = targetServers.filter(s => s.diagnosed);
+            
+            if (diagnosedServers.length === 0) {
+                alert('진단된 서버가 없습니다.');
+                return;
+            }
+
+            let totalFixed = 0;
+            diagnosedServers.forEach(server => {
+                totalFixed += server.vulnerabilities.filter(v => v.status === 'fixed').length;
+            });
+
+            if (totalFixed === 0) {
+                alert('조치된 취약점이 없습니다. 조치를 먼저 수행해주세요.');
+                return;
+            }
+
+            addLog('전체 조치 보고서 생성 중', 'info');
+            showProgress('📋', '전체 조치 보고서 생성 중', '모든 서버의 조치 내역을 종합하고 있습니다');
+
+            setTimeout(() => {
+                let totalVulnerable = 0;
+                
+                diagnosedServers.forEach(server => {
+                    totalVulnerable += server.vulnerabilities.filter(v => v.status === 'vulnerable').length;
+                });
+                
+                const totalVulns = totalVulnerable + totalFixed;
+                const remediationRate = Math.round(totalFixed / totalVulns * 100);
+                
+                closeProgress();
+                addLog('전체 조치 보고서 생성 완료', 'success');
+                alert(`📋 전체 조치 보고서 생성 완료\n\n대상 서버: ${diagnosedServers.length}개\n조치 완료: ${totalFixed}개\n미조치: ${totalVulnerable}개\n조치율: ${remediationRate}%`);
+            }, 2000);
+        }
+
+        // Update Snapshot Badge
+        function updateSnapshotBadge() {
+            const badge = document.getElementById('snapshotBadge');
+            badge.innerHTML = `<span>📸</span><span>Snapshot #${currentSnapshot}</span>`;
+        }
+
+        // Progress Modal
+        function showProgress(icon, title, desc) {
+            document.getElementById('progressIcon').textContent = icon;
+            document.getElementById('progressTitle').textContent = title;
+            document.getElementById('progressDesc').textContent = desc;
+            document.getElementById('progressModal').classList.add('active');
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('progressPercent').textContent = progress;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 100);
+        }
+
+        function closeProgress() {
+            setTimeout(() => {
+                document.getElementById('progressModal').classList.remove('active');
+                document.getElementById('progressBar').style.width = '0%';
+                document.getElementById('progressPercent').textContent = '0';
+            }, 500);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            addLog('AUTOISMS 시스템 초기화 완료', 'success');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

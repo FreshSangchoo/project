@@ -1,0 +1,49 @@
+---
+# Ansible Inventory 파일 (YAML 형식)
+# 이 파일은 AUTOISMS에서 타겟 서버 목록을 읽어오는 데 사용됩니다.
+#
+# 개발 당시 환경은 공유 네트워크(핫스팟) 기반으로 구성되었으며,
+# 현재 해당 네트워크 환경이 존재하지 않아 실제 접속이 불가능합니다.
+# 새로운 환경에서 실행하려면 아래 값들을 실제 환경에 맞게 수정하세요.
+#
+# 서버 구성 (개발 당시 기준):
+# - main: AUTOISMS 실행 서버 (Ubuntu 22.04)
+# - target1: 진단 대상 서버 (Ubuntu 24.04)
+# - target2: 진단 대상 서버 (Rocky Linux 9.7)
+# - target3: 진단 대상 서버
+# - target4: 진단 대상 서버
+# - target5: 진단 대상 서버
+
+all:
+  hosts:
+    target1:
+      ansible_host: <타겟1 IP>
+      ansible_port: 22
+      ansible_user: <사용자명>
+      ansible_ssh_private_key_file: <SSH 키 경로>
+    target2:
+      ansible_host: <타겟2 IP>
+      ansible_port: 22
+      ansible_user: <사용자명>
+      ansible_ssh_private_key_file: <SSH 키 경로>
+    target3:
+      ansible_host: <타겟3 IP>
+      ansible_port: 22
+      ansible_user: <사용자명>
+      ansible_ssh_private_key_file: <SSH 키 경로>
+    target4:
+      ansible_host: <타겟4 IP>
+      ansible_port: 22
+      ansible_user: <사용자명>
+      ansible_ssh_private_key_file: <SSH 키 경로>
+    target5:
+      ansible_host: <타겟5 IP>
+      ansible_port: 22
+      ansible_user: <사용자명>
+      ansible_ssh_private_key_file: <SSH 키 경로>
+  vars:
+    ansible_connection: ssh
+    ansible_ssh_common_args: -o StrictHostKeyChecking=no
+    # NOPASSWD 전제: become 비밀번호 없이 sudo -n 사용 (Missing sudo password 방지)
+    ansible_become_password: ''
+    ansible_become_flags: -n

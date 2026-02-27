@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AUTOISMS 전체 조치 보고서</title>
+<style>
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url(fonts/NotoSansKR-VF.woff2) format('woff2');
+}
+
+@page {
+    size: A4 landscape;
+    margin: 15mm 15mm 20mm 15mm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 9pt;
+        color: #656d76;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #24292f;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.report-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px 20px 0 20px;
+}
+
+/* 맨 위 큰 제목 */
+.report-title {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 18px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #0969da;
+}
+
+/* 기본 정보 표 (시간/서버 대수/총 점검 항목) - 표 안 글씨 보이게 */
+.meta-table-wrap {
+    margin-bottom: 12px;
+}
+.meta-table-wrap table {
+    width: 100%;
+    max-width: 720px;
+    border-collapse: collapse;
+    font-size: 10pt;
+    background: #fff;
+}
+.meta-table-wrap th {
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    width: 120px;
+    vertical-align: top;
+    background: #f6f8fa;
+    color: #24292f;
+    border: 1px solid #d0d7de;
+}
+.meta-table-wrap td {
+    padding: 8px 12px;
+    background: #fff;
+    color: #24292f;
+    border: 1px solid #d0d7de;
+}
+.meta-table-wrap tr { border-bottom: none; }
+.meta-table-wrap .criteria-note {
+    font-size: 9pt;
+    color: #24292f;
+}
+
+/* 기존 취약 → 조치 후 취약 표 (따로) */
+.vuln-flow-table {
+    width: 100%;
+    max-width: 560px;
+    border-collapse: collapse;
+    font-size: 10pt;
+    margin-bottom: 16px;
+}
+.vuln-flow-table th,
+.vuln-flow-table td {
+    border: 1px solid #d0d7de;
+    padding: 8px 12px;
+    text-align: center;
+}
+.vuln-flow-table th {
+    background: #424a53;
+    color: #fff !important;
+    font-weight: 600;
+}
+.vuln-flow-table td {
+    background: #fff;
+    color: #24292f;
+}
+.vuln-flow-table .arrow-cell {
+    color: #0969da;
+    font-weight: 700;
+    width: 40px;
+}
+.vuln-flow-table tbody tr:nth-child(even) td { background: #f6f8fa; }
+.vuln-flow-table tbody tr:nth-child(even) td.arrow-cell { background: #f6f8fa; }
+
+/* 서버 리스트 */
+.section {
+    margin-top: 18px;
+}
+.section h2 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #d0d7de;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 6px;
+}
+th, td {
+    border: 1px solid #d0d7de;
+    padding: 6px 8px;
+    text-align: center;
+}
+th {
+    background: #424a53;
+    color: #fff;
+    font-weight: 600;
+}
+.section table tbody td {
+    background: #fff;
+    color: #24292f;
+}
+.section table tbody tr:nth-child(even) td {
+    background: #f6f8fa;
+}
+
+/* 상태 색상: Vulnerable 빨간색, MANUAL 노란색, SAFE 초록색, 회귀 노란/주황 (td에서 확실히 적용되도록) */
+.section table td.safe { color: #1a7f37 !important; font-weight: 600; }
+.section table td.vuln { color: #b91c1c !important; font-weight: 700; background: #fef2f2 !important; }
+.section table td.manual { color: black !important; font-weight: 700; background: white !important; }
+.section table td.regression { color: #b45309 !important; font-weight: 700; background: #fffbeb !important; }
+
+/* 조치 결과 요약: 서버별 블록, 서버 이름 상단 */
+.server-summary-block { margin-bottom: 20px; }
+.server-summary-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    padding: 6px 10px;
+    background: #eaeef2;
+    border-radius: 6px;
+    border-left: 4px solid #0969da;
+}
+</style>
+</head>
+<body>
+
+<div class="report-container">
+
+    <h1 class="report-title">AUTOISMS 전체 조치 보고서</h1>
+
+    <!-- 기본 정보 표: 시간 / 서버 대수 / 총 점검 항목 + 기준 -->
+    <div class="meta-table-wrap">
+        <table>
+            <tr>
+                <th>시간</th>
+                <td>{{ meta.generated_at }} (한국기준)</td>
+            </tr>
+            <tr>
+                <th>서버 대수</th>
+                <td>{{ meta.target_count }}대</td>
+            </tr>
+            <tr>
+                <th>총 점검 항목</th>
+                <td>{{ summary.total_items }}</td>
+            </tr>
+            <tr>
+                <th>기준</th>
+                <td class="criteria-note">주요정보통신기반시설 기술적 취약점 분석·평가 방법 상세가이드(2025.12.24) 총 67개의 기준 (UNIX 서버 기준)</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 기존 취약 → 조치 후 취약 표 (따로) -->
+    <table class="vuln-flow-table">
+        <thead>
+            <tr>
+                <th>기존 취약</th>
+                <th class="arrow-cell">→</th>
+                <th>조치 후 취약</th>
+                <th>개선</th>
+                <th>개선율</th>
+                <th>회귀</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ summary.before_vulnerable }}건</td>
+                <td class="arrow-cell">→</td>
+                <td>{{ summary.after_vulnerable }}건</td>
+                <td>{{ summary.improved }}건</td>
+                <td>{{ summary.improvement_rate }}%</td>
+                <td>{{ summary.regression_count }}건</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 서버 리스트: OS 타입, OS 버전, IP, Hostname -->
+    <div class="section">
+        <h2>리스트</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>OS 타입</th>
+                    <th>OS 버전</th>
+                    <th>IP</th>
+                    <th>Hostname</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for s in server_list %}
+                <tr>
+                    <td>{{ s.os|default('-') }}</td>
+                    <td>{{ s.osver }}</td>
+                    <td>{{ s.ip }}</td>
+                    <td>{{ s.hostname }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 조치 결과 요약: 서버 이름 위, 항목코드 옆에 카테고리 행으로, Vulnerable·회귀 가독성 강조 -->
+    <div class="section">
+        <h2>조치 결과 요약</h2>
+        {% for server_block in vulnerabilities_by_server %}
+        <div class="server-summary-block">
+            <h3 class="server-summary-title">{{ server_block.hostname }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>카테고리</th>
+                        <th>항목코드</th>
+                        <th>항목명</th>
+                        <th>조치 전</th>
+                        <th>조치 후</th>
+                        <th>결과</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for v in server_block.entries %}
+                    <tr>
+                        <td>{{ v.category|default('기타') }}</td>
+                        <td>{{ v.check_id }}</td>
+                        <td>{{ v.description }}</td>
+                        <td class="{% if v.before_status == 'SAFE' or v.before_status == 'FIXED' %}safe{% elif v.before_status == 'MANUAL' %}manual{% else %}vuln{% endif %}">{{ 'SAFE' if v.before_status == 'FIXED' else v.before_status }}</td>
+                        <td class="{% if v.after_status == 'SAFE' or v.after_status == 'FIXED' %}safe{% elif v.after_status == 'MANUAL' %}manual{% elif v.after_status == 'VULNERABLE' %}vuln{% endif %}">{{ 'SAFE' if v.after_status == 'FIXED' else v.after_status }}</td>
+                        <td class="{% if v.regression %}regression{% elif v.after_status == 'MANUAL' %}manual{% elif v.after_status == 'VULNERABLE' %}vuln{% endif %}">
+                            {% if v.regression %}
+                                회귀 발생
+                            {% elif v.after_status == 'SAFE' or v.after_status == 'FIXED' %}
+                                조치 완료
+                            {% elif v.after_status == 'MANUAL' %}
+                                수동 조치 필요
+                            {% elif v.after_status == 'VULNERABLE' %}
+                                조치 실패
+                            {% else %}
+                                미조치
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

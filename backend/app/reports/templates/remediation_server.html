@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AUTOISMS 개별 조치 보고서</title>
+<style>
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url(fonts/NotoSansKR-VF.woff2) format('woff2');
+}
+
+* { box-sizing: border-box; }
+
+@page {
+    size: A4;
+    margin: 20mm 15mm 15mm 15mm;
+    @bottom-right {
+        content: counter(page);
+        font-size: 9pt;
+        color: #8c959f;
+    }
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #24292f;
+    background: #fff;
+    margin: 0;
+    padding: 24px 28px;
+}
+
+.page { max-width: 100%; margin: 0 auto; }
+
+/* 제목 */
+.main-title {
+    font-size: 18pt;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 16px 0;
+}
+
+/* 상단: 날짜·시간, OS 타입, OS 버전, IP, HostName 표 */
+.meta-table-wrap {
+    margin-bottom: 16px;
+    border-bottom: 2px solid #d0d7de;
+    padding-bottom: 12px;
+}
+.meta-table {
+    width: 100%;
+    max-width: 720px;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+.meta-table th {
+    text-align: left;
+    padding: 6px 12px 6px 0;
+    color: #424a53;
+    font-weight: 600;
+    width: 140px;
+}
+.meta-table td {
+    padding: 6px 0;
+    color: #1a1a1a;
+}
+.meta-table tr { border-bottom: 1px solid #eaeef2; }
+.meta-table tr:last-child { border-bottom: none; }
+
+/* 기존 취약 개수 -> 조치 후 취약 개수 (가운데 정렬) */
+.summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 10pt;
+    background: #f6f8fa;
+}
+.summary-block { flex: 1; text-align: center; }
+.summary-arrow {
+    width: 40px;
+    text-align: center;
+    font-size: 16pt;
+    color: #0969da;
+    font-weight: 700;
+}
+
+/* 카테고리 섹션 */
+.category-section { margin-bottom: 20px; }
+.category-title {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #0969da;
+}
+
+/* 항목 카드: 코드, 취약도, 항목명 */
+.vuln-card {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 10pt;
+}
+.vuln-header {
+    margin-bottom: 8px;
+}
+.vuln-code { font-weight: 700; margin-right: 8px; }
+.vuln-desc { color: #24292f; }
+.severity-badge {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 999px;
+    margin-left: 6px;
+}
+.severity-badge.HIGH { background: #ffebe9; color: #cf222e; }
+.severity-badge.MEDIUM { background: #fff8c5; color: #9a6700; }
+.severity-badge.LOW { background: #dafbe1; color: #1a7f37; }
+
+/* 터미널 위 라벨: 기존 설정 / 조치 후 설정 가운데 정렬 */
+.terminal-caption {
+    display: table;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.terminal-caption span {
+    display: table-cell;
+    width: 50%;
+    padding: 2px 6px;
+    text-align: center;
+}
+
+/* 터미널창: 진짜 터미널처럼 (동그라미 버튼 + 내용) */
+.terminal-wrap {
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background: #21262d;
+    border-bottom: 1px solid #30363d;
+    gap: 0;
+}
+.terminal-header .terminal-dots { flex-shrink: 0; width: 36px; }
+.terminal-header .terminal-spacer { width: 36px; flex-shrink: 0; }
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 7pt;
+    color: #8b949e;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+/* 동그라미: SVG로 원형 확실히 유지 (PDF/WeasyPrint 호환) */
+.terminal-dots {
+    display: inline-block;
+    width: 36px;
+    height: 12px;
+    flex-shrink: 0;
+}
+.terminal-dots svg {
+    display: block;
+    width: 36px;
+    height: 12px;
+}
+.terminal-block {
+    width: 100%;
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 10pt;
+    line-height: 1.2;
+    overflow-x: auto;
+}
+.terminal-row { display: table; width: 100%; border-collapse: collapse; }
+.terminal-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding: 4px 8px 5px;
+    border-right: 1px solid #30363d;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #e6edf3;
+}
+.terminal-col:last-child { border-right: none; }
+.terminal-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-bottom: 1px;
+}
+.terminal-line:last-child { margin-bottom: 0; }
+.terminal-comment { color: #b1bac4; }
+.terminal-code { color: #7ee787; }
+
+/* 세부사항 (이전처럼 라벨만) */
+.details-block {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #d0d7de;
+    font-size: 9pt;
+    color: #424a53;
+}
+.details-title { font-weight: 600; color: #24292f; margin-bottom: 4px; }
+.details-block .details-list { margin: 4px 0 0 0; padding-left: 18px; }
+
+.badge {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 999px;
+    margin-right: 4px;
+}
+.badge-ok { background: #dafbe1; color: #1a7f37; }
+.badge-warn { background: #fff8c5; color: #9a6700; }
+.badge-error { background: #ffebe9; color: #cf222e; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+    <h1 class="main-title">AUTOISMS 개별 조치 보고서</h1>
+
+    <!-- 날짜·시간, OS 타입, OS 버전, IP, HostName 표 -->
+    <div class="meta-table-wrap">
+        <table class="meta-table">
+            <tr><th>날짜·시간</th><td>{{ meta.generated_at }}</td></tr>
+            <tr><th>OS 타입</th><td>{{ meta.os_type }}</td></tr>
+            <tr><th>OS 버전</th><td>{{ meta.os_version }}</td></tr>
+            <tr><th>IP</th><td>{{ meta.ip }}</td></tr>
+            <tr><th>HostName</th><td>{{ meta.hostname }}</td></tr>
+        </table>
+    </div>
+
+    <!-- 기존 취약 개수 -> 조치 후 취약 개수 (가운데 정렬) -->
+    <div class="summary-row">
+        <div class="summary-block">
+            <strong>기존 취약</strong> {{ summary.before_vulnerable }}건
+        </div>
+        <div class="summary-arrow">→</div>
+        <div class="summary-block">
+            <strong>조치 후 취약</strong> {{ summary.after_vulnerable }}건
+        </div>
+    </div>
+
+    <!-- 카테고리별 → 코드, 취약도, 항목명 → 터미널(현재 설정 | 조치후) → 세부사항 -->
+    {% for category, items in by_category.items() %}
+    <div class="category-section">
+        <h2 class="category-title">{{ category }}</h2>
+        {% for v in items %}
+        <div class="vuln-card">
+            <div class="vuln-header">
+                <span class="vuln-code">{{ v.check_id }}</span>
+                <span class="vuln-desc">{{ v.description }}</span>
+                {% if v.severity %}
+                <span class="severity-badge {{ v.severity }}">{{ v.severity }}</span>
+                {% endif %}
+            </div>
+
+            <!-- 터미널 위 라벨: 기존 설정 | 조치 후 설정 -->
+            <div class="terminal-caption">
+                <span>기존 설정</span>
+                <span>조치 후 설정</span>
+            </div>
+            <!-- 터미널창: 동그라미 버튼 + 내용 (진짜 터미널처럼) -->
+            <div class="terminal-wrap">
+                <div class="terminal-header">
+                    <span class="terminal-dots">
+                        <svg viewBox="0 0 36 12" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="6" cy="6" r="5" fill="#ff5f56"/>
+                            <circle cx="18" cy="6" r="5" fill="#ffbd2e"/>
+                            <circle cx="30" cy="6" r="5" fill="#27c93f"/>
+                        </svg>
+                    </span>
+                    <span class="terminal-title">설정 비교</span>
+                    <span class="terminal-spacer"></span>
+                </div>
+                <div class="terminal-block">
+                    <div class="terminal-row">
+                        <!-- 왼쪽: 기존 설정값 -->
+                        <div class="terminal-col">
+                            {% set _before_lines = v.before_evidence if v.before_evidence else [] %}
+                            {% set _before_val = (v.current_value or '') %}
+                            {% if _before_lines %}
+                            {% for line in _before_lines %}
+                            <div class="terminal-line terminal-code">{{ line }}</div>
+                            {% endfor %}
+                            {% elif _before_val and '수동 점검 필요' not in _before_val %}
+                            {% for line in _before_val.split('\n') %}
+                            <div class="terminal-line terminal-code">{{ line }}</div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="terminal-line terminal-comment">–</div>
+                            {% endif %}
+                        </div>
+                        <!-- 오른쪽: 조치 후 설정값(현재 설정) -->
+                        <div class="terminal-col">
+                            {% set _after_lines = v.after_evidence if v.after_evidence else [] %}
+                            {% set _after_val = (v.expected_value or '') %}
+                            {% if _after_lines %}
+                            {% for line in _after_lines %}
+                            <div class="terminal-line terminal-code">{{ line }}</div>
+                            {% endfor %}
+                            {% elif _after_val and '수동 점검 필요' not in _after_val %}
+                            {% for line in _after_val.split('\n') %}
+                            <div class="terminal-line terminal-code">{{ line }}</div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="terminal-line terminal-comment">–</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 세부사항 (이전처럼 라벨만) -->
+            <div class="details-block">
+                <div class="details-title">세부사항</div>
+                {% if v.details %}
+                <ul class="details-list">
+                {% for line in v.details %}
+                {% if '수동 점검 필요' not in (line or '') %}
+                    <li>{{ line }}</li>
+                {% endif %}
+                {% endfor %}
+                </ul>
+                {% else %}
+                <span>–</span>
+                {% endif %}
+                {% if v.regression %}
+                    <span class="badge badge-error">회귀 발생</span>
+                {% elif (v.before_status or '').upper() in ('VULNERABLE', 'MANUAL') and (v.after_status or '').upper() in ('SAFE', 'FIXED') %}
+                    <span class="badge badge-ok">조치 완료</span>
+                {% elif (v.after_status or '').upper() == 'MANUAL' %}
+                    <span class="badge badge-warn">수동 조치 필요</span>
+                {% elif (v.after_status or '').upper() == 'VULNERABLE' %}
+                    <span class="badge badge-error">조치 실패</span>
+                {% else %}
+                    <span class="badge badge-ok">유지</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
