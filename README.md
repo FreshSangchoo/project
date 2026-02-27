@@ -5,6 +5,19 @@
 
 ## Project List
 
+### AUTOISMS (오토이즘)
+
+> KISA ISMS-P 기준 보안 취약점 자동 진단 및 조치 시스템
+
+- 기간: 2026.02.04. ~ 2026.02.20.(주말 및 공휴일 제외 10일)
+- 역할: 팀장 / 백엔드 개발 / 프론트엔드 개발
+- 기술: FastAPI, Python, Vanilla JavaScript, Ansible, Paramiko, SQLite, WeasyPrint
+- 주요 기능: SSH 기반 취약점 자동 진단(U-01 ~ U-67), 자동 조치 및 백업, 회귀 감지 및 알림, PDF/CSV/JSON 보고서 생성
+
+🔗 **Branch:** `autoisms`
+
+---
+
 ### Akify (아키파이)
 
 > React Native 기반 악기 중고거래 플랫폼 (iOS / Android 동시 배포)
